@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en-US">
+<html class="no-js" lang="ID">
 <head>
   <meta charset="utf-8">
   <title><?php echo isset($data['doc_title']) ? $data['doc_title'] . ' | ' . APP_NAME : APP_NAME; ?></title>
