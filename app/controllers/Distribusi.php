@@ -125,6 +125,7 @@ class Distribusi extends \App\Core\Controller {
       'es_tabung_besar' => 0,
       'es_tabung_kecil' => 0,
       'es_serut' => 0,
+      'berat_total' => 0,
       'total_harga' => '',
       'metode_pembayaran' => $data['pelanggan'] ? $data['pelanggan']['metode_pembayaran'] : 'cash',
       'pin' => ''
@@ -139,6 +140,7 @@ class Distribusi extends \App\Core\Controller {
       $set['es_tabung_besar'] = isset($_POST['es_tabung_besar']) ? trim($_POST['es_tabung_besar']) : '';
       $set['es_tabung_kecil'] = isset($_POST['es_tabung_kecil']) ? trim($_POST['es_tabung_kecil']) : '';
       $set['es_serut'] = isset($_POST['es_serut']) ? trim($_POST['es_serut']) : '';
+      $set['berat_total'] = isset($_POST['berat_total']) ? trim($_POST['berat_total']) : '';
       $set['bonus_es_tabung_kecil'] = isset($_POST['bonus_es_tabung_kecil']) ? trim($_POST['bonus_es_tabung_kecil']) : '';
       $set['total_harga'] = isset($_POST['total_harga']) ? \App\Core\Utilities::numbersOnly(trim($_POST['total_harga'])) : '';
       $set['metode_pembayaran'] = isset($_POST['metode_pembayaran']) ? trim($_POST['metode_pembayaran']) : '';
@@ -201,13 +203,14 @@ class Distribusi extends \App\Core\Controller {
       $data['default']['es_tabung_besar'] = $set['es_tabung_besar'];
       $data['default']['es_tabung_kecil'] = $set['es_tabung_kecil'];
       $data['default']['es_serut'] = $set['es_serut'];
+      $data['default']['berat_total'] = $set['berat_total'];
       $data['default']['total_harga'] = $set['total_harga'];
       $data['default']['metode_pembayaran'] = $set['metode_pembayaran'];
       
       if (count($data['error']) < 1) {
         $set['id_user'] = $id_pelanggan;
         $set['id_surat_jalan'] = $data['surat_jalan']['id_surat_jalan'];
-
+        
         if ($id_pelanggan < 1) {
           $set['id_jalur_pengiriman'] = $data['surat_jalan']['id_jalur_pengiriman'];
           $pelanggan->addCustomer($set);

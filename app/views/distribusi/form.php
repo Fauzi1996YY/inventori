@@ -120,6 +120,11 @@ foreach ($errorClass as $k => $v) {
         <input type="hidden" name="bonus_es_tabung_kecil" id="bonus_es_tabung_kecil" value="">
         <strong class="green-text">Bonus <span class="bonus_number"></span> kantong</strong>
       </p>
+      <p>
+        <label for="berat_total"><span class="mandatory">Berat total</span></label><br>
+        <input type="number" step=".01" name="berat_total" id="berat_total" class="one-fourth <?php echo $errorClass['berat_total']; ?>" value="<?php echo $default['berat_total']; ?>"><br>
+        <?php echo $errorText['berat_total']; ?>
+      </p>
     </div>
   </div>
 

@@ -54,8 +54,8 @@ class Penjualan extends \App\Core\Model {
 
   public function add($data) {
     $sql = 'insert into `penjualan`
-            (`id_user`, `id_surat_jalan`, `es_tabung_besar`, `es_tabung_kecil`, `es_serut`, `bonus_es_tabung_kecil`, `total_harga`, `metode_pembayaran`)
-            values (:id_user, :id_surat_jalan, :es_tabung_besar, :es_tabung_kecil, :es_serut, :bonus_es_tabung_kecil, :total_harga, :metode_pembayaran)
+            (`id_user`, `id_surat_jalan`, `es_tabung_besar`, `es_tabung_kecil`, `es_serut`, `berat_total`, `bonus_es_tabung_kecil`, `total_harga`, `metode_pembayaran`)
+            values (:id_user, :id_surat_jalan, :es_tabung_besar, :es_tabung_kecil, :es_serut, :berat_total, :bonus_es_tabung_kecil, :total_harga, :metode_pembayaran)
             ';
             
     $stmt = $this->db->prepare($sql);
@@ -64,6 +64,7 @@ class Penjualan extends \App\Core\Model {
     $stmt->bindParam(':es_tabung_besar', $data['es_tabung_besar']);
     $stmt->bindParam(':es_tabung_kecil', $data['es_tabung_kecil']);
     $stmt->bindParam(':es_serut', $data['es_serut']);
+    $stmt->bindParam(':berat_total', $data['berat_total']);
     $stmt->bindParam(':bonus_es_tabung_kecil', $data['bonus_es_tabung_kecil']);
     $stmt->bindParam(':total_harga', $data['total_harga']);
     $stmt->bindParam(':metode_pembayaran', $data['metode_pembayaran']);
@@ -72,7 +73,7 @@ class Penjualan extends \App\Core\Model {
       $stmt->execute();
       $this->setLastInsertId($this->db->lastInsertId());
       return true;
-    } catch(PDOException $e) {
+    } catch(\PDOException $e) {
       $this->setErrorInfo($e->getMessage());
       $this->setErrorCode($e->getCode());
       return false;
