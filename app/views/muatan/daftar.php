@@ -14,15 +14,15 @@
 <table class="extra">
   <tbody>
     <tr>
-      <td>
+      <td width="33.333%">
         <strong class="smaller-text lighter-text">Jalur</strong><br>
         <span class="value"><?php echo $data['surat_jalan']['nama_jalur_pengiriman'];?></span>
       </td>
-      <td>
+      <td width="33.333%">
         <strong class="smaller-text lighter-text">Sopir 1</strong><br>
         <span class="value"><?php echo $data['surat_jalan']['nama_sopir_1'];?></span>
       </td>
-      <td>
+      <td width="33.333%">
         <strong class="smaller-text lighter-text">Sopir 2</strong><br>
         <span class="value"><?php echo $data['surat_jalan']['nama_sopir_2'];?></span>
       </td>
