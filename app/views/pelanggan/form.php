@@ -97,7 +97,7 @@ foreach ($errorClass as $k => $v) {
     <div class="fields">
       <p>
         <label for="harga_satuan"><span class="mandatory">Harga satuan</span></label><br>
-        <input name="harga_satuan" type="number" id="harga_satuan" class="one-fourth <?php echo $errorClass['harga_satuan']; ?>" value="<?php echo \App\Core\Utilities::formatRupiah($default['harga_satuan']); ?>"><br>
+        <input name="harga_satuan" type="number" id="harga_satuan" class="one-fourth <?php echo $errorClass['harga_satuan']; ?>" value="<?php echo $default['harga_satuan']; ?>"><br>
         <?php echo $errorText['harga_satuan']; ?>
       </p>
       <p>
