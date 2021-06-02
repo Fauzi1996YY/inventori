@@ -636,6 +636,11 @@ ul.pagination {
     outline: none;
     }
 
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  }
+
 /**
 * Header
 ************************************************************************/
