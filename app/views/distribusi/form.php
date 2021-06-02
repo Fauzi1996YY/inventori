@@ -7,6 +7,7 @@ $errorClass = array(
   'es_tabung_besar' => '',
   'es_tabung_kecil' => '',
   'es_serut' => '',
+  'berat_total' => '',
   'total_harga' => '',
   'metode_pembayaran' => '',
   'pin' => ''
