@@ -3,6 +3,7 @@
   
   <?php if (!$data['invalidated_muatan']) : ?>
     <div class="actions">
+      <a href="<?php echo BASE_URL;?>/pindah-muatan/" class="button secondary">Pindah muatan</a>
       <a href="<?php echo BASE_URL;?>/bongkar-muatan/" class="button secondary">Bongkar muatan</a>
       <a href="<?php echo BASE_URL;?>/distribusi/form" class="button secondary">+ Buat nota pelanggan baru</a>
     </div>

@@ -40,6 +40,7 @@ class Distribusi extends \App\Core\Controller {
       die();
     }
 
+    /* This data is replicated in pindah muatan */
     $data['muatan'] = $muatan->getDataByIdSuratJalan($data['surat_jalan']['id_surat_jalan']);
     
     if (count($data['muatan']) < 1 || $data['surat_jalan']['total_muatan'] == $data['surat_jalan']['total_muatan_tervalidasi']) {
@@ -59,16 +60,22 @@ class Distribusi extends \App\Core\Controller {
     $data['invalidated_muatan'] = false;
     foreach ($data['muatan'] as $k => $v) {
       $data['sisa_muatan']['es_tabung_besar'] += $v['muatan_tabung_besar'];
+      $data['sisa_muatan']['es_tabung_besar'] += $v['terima_tabung_besar'];
       $data['sisa_muatan']['es_tabung_besar'] -= $v['kembali_tabung_besar'];
       $data['sisa_muatan']['es_tabung_besar'] -= $v['rusak_tabung_besar'];
+      $data['sisa_muatan']['es_tabung_besar'] -= $v['pindah_tabung_besar'];
 
       $data['sisa_muatan']['es_tabung_kecil'] += $v['muatan_tabung_kecil'];
+      $data['sisa_muatan']['es_tabung_kecil'] += $v['terima_tabung_kecil'];
       $data['sisa_muatan']['es_tabung_kecil'] -= $v['kembali_tabung_kecil'];
       $data['sisa_muatan']['es_tabung_kecil'] -= $v['rusak_tabung_kecil'];
+      $data['sisa_muatan']['es_tabung_kecil'] -= $v['pindah_tabung_kecil'];
 
       $data['sisa_muatan']['es_serut'] += $v['muatan_serut'];
+      $data['sisa_muatan']['es_serut'] += $v['terima_serut'];
       $data['sisa_muatan']['es_serut'] -= $v['kembali_serut'];
       $data['sisa_muatan']['es_serut'] -= $v['rusak_serut'];
+      $data['sisa_muatan']['es_serut'] -= $v['pindah_serut'];
 
       if ($v['validasi_muatan'] == 0) {
         $data['invalidated_muatan'] = true;
