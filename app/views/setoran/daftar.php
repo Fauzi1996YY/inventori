@@ -15,7 +15,7 @@ foreach ($errorClass as $k => $v) {
   }
 }
 
-$ammount_due = $data['total_cash'];
+$amount_due = $data['total_cash'];
 
 ?>
 
@@ -86,7 +86,7 @@ $ammount_due = $data['total_cash'];
       </tr>
       <?php $jumlah += $v['jumlah']; ?>
     <?php endforeach; ?>
-    <?php $ammount_due-= $jumlah; ?>
+    <?php $amount_due-= $jumlah; ?>
   </tbody>
   
   <?php if (count($data['operasional']) > 0) : ?>
@@ -139,7 +139,7 @@ $ammount_due = $data['total_cash'];
       <?php $jumlah += $v['jumlah']; ?>
     <?php endforeach; ?>
 
-    <?php $ammount_due-= $jumlah; ?>
+    <?php $amount_due-= $jumlah; ?>
 
     <?php if (count($data['kasbon']) > 0) : ?>
       <tfoot>
@@ -161,7 +161,7 @@ $ammount_due = $data['total_cash'];
       <p>
         <label for="jumlah_cash"><span class="mandatory">Jumlah cash</span></label><br>
         <input type="number" name="jumlah_cash" id="jumlah_cash" class="one-fourth <?php echo $errorClass['jumlah_cash'];?>" value="<?php echo \App\Core\Utilities::formatRupiah($data['surat_jalan']['jumlah_cash']); ?>"><br>
-        <span class="inline-help">Jumlah yang harus disetorkan: <strong>Rp. <?php echo \App\Core\Utilities::formatRupiah($ammount_due); ?></strong></span>
+        <span class="inline-help">Jumlah yang harus disetorkan: <strong>Rp. <?php echo \App\Core\Utilities::formatRupiah($amount_due); ?></strong></span>
         <?php echo $errorText['jumlah_cash']; ?>
       </p>
     </div>
