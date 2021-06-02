@@ -16,7 +16,7 @@ class SuratJalan extends \App\Core\Model {
               left join `user` d on a.`id_user_2` = d.`id_user`
             where a.`tanggal` = curdate() or a.`validasi_setoran` = 0
             group by a.`id_surat_jalan`
-            order by a.`id_surat_jalan` desc
+            order by b.`nama` asc
             ';
     
     $this->setSql($sql);
