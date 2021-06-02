@@ -90,6 +90,7 @@ class Pelanggan extends \App\Core\Controller {
     }
 
     if (isset($_POST['submit'])) {
+      
       $set = array();
       $set['id_jalur_pengiriman'] = isset($_POST['id_jalur_pengiriman']) ? trim($_POST['id_jalur_pengiriman']) : '';
       $set['nama'] = isset($_POST['nama']) ? trim($_POST['nama']) : '';
@@ -123,9 +124,6 @@ class Pelanggan extends \App\Core\Controller {
 
       if ($set['harga_satuan'] == '') {
         $data['error']['harga_satuan'] = 'Harga satuan harus diisi';
-      }
-      else if ($set['harga_satuan'] < 1) {
-        $data['error']['harga_satuan'] = 'Harga satuan harus lebih dari 0';
       }
 
       if ($set['metode_pembayaran'] == '') {
