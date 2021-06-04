@@ -57,6 +57,9 @@
 				sum();
 			}
 		}
+		else {
+			bonusPar.style.display = 'none';
+		}
 		
 	}());
 
