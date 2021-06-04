@@ -122,6 +122,7 @@ class Distribusi extends \App\Core\Controller {
         die();
       }
     }
+
     $data['surat_jalan'] = $suratJalan->getTodaysForSopir($_SESSION['id_user']);
     $data['total_penjualan'] = $penjualan->getTodaysPenjualanByIdUser($id_pelanggan);
     $data['error'] = array();
@@ -148,7 +149,7 @@ class Distribusi extends \App\Core\Controller {
       $set['es_tabung_kecil'] = isset($_POST['es_tabung_kecil']) ? trim($_POST['es_tabung_kecil']) : '';
       $set['es_serut'] = isset($_POST['es_serut']) ? trim($_POST['es_serut']) : '';
       $set['berat_total'] = isset($_POST['berat_total']) ? trim($_POST['berat_total']) : '';
-      $set['bonus_es_tabung_kecil'] = isset($_POST['bonus_es_tabung_kecil']) ? trim($_POST['bonus_es_tabung_kecil']) : '';
+      $set['bonus_es_tabung_kecil'] = isset($_POST['bonus_es_tabung_kecil']) ? (int)trim($_POST['bonus_es_tabung_kecil']) : 0;
       $set['total_harga'] = isset($_POST['total_harga']) ? \App\Core\Utilities::numbersOnly(trim($_POST['total_harga'])) : '';
       $set['metode_pembayaran'] = isset($_POST['metode_pembayaran']) ? trim($_POST['metode_pembayaran']) : '';
       $set['pin'] = isset($_POST['pin']) ? trim($_POST['pin']) : '';
@@ -158,14 +159,17 @@ class Distribusi extends \App\Core\Controller {
         $data['error']['nama'] = 'Nama pelanggan harus diisi';
       }
 
+      /*
       if ($id_pelanggan < 1 && $set['no_telp'] == '') {
         $data['error']['no_telp'] = 'No telp harus diisi';
       }
+      */
 
+      /*
       if ($id_pelanggan < 1 && $set['alamat'] == '') {
         $data['error']['alamat'] = 'Alamat harus diisi';
       }
-      /**/
+      */
 
       if ($set['es_tabung_besar'] < 1 && $set['es_tabung_kecil'] < 1 && $set['es_serut'] < 1){
         $data['error']['header'] = 'Salah satu barang harus diisi';
@@ -220,6 +224,8 @@ class Distribusi extends \App\Core\Controller {
         
         if ($id_pelanggan < 1) {
           $set['id_jalur_pengiriman'] = $data['surat_jalan']['id_jalur_pengiriman'];
+          /* Anggoro asked for this */
+          $set['pin'] = '123';
           $pelanggan->addCustomer($set);
           $set['id_user'] = $pelanggan->getLastInsertId();
           $nama = $set['nama'];

@@ -196,7 +196,7 @@ class Pelanggan extends \App\Core\Model {
   public function addCustomer($data) {
 
     $digits = 3;
-    $pin = str_pad(rand(0, pow(10, $digits)-1), $digits, '0', STR_PAD_LEFT);
+    $pin = isset($data['pin']) ? $data['pin'] : str_pad(rand(0, pow(10, $digits)-1), $digits, '0', STR_PAD_LEFT);
     $password = hash('sha512', 'pass');
     $role = 'pelanggan';
 

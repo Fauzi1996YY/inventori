@@ -2,8 +2,6 @@
 
 $errorClass = array(
   'nama' => '',
-  'no_telp' => '',
-  'alamat' => '',
   'es_tabung_besar' => '',
   'es_tabung_kecil' => '',
   'es_serut' => '',
@@ -82,14 +80,12 @@ foreach ($errorClass as $k => $v) {
           <?php echo $errorText['nama']; ?>
         </p>
         <p>
-          <label for="no_telp"><span class="mandatory">No Telp</span></label><br>
-          <input type="text" name="no_telp" id="no_telp" class="<?php echo $errorClass['no_telp']; ?>" value="<?php echo $default['no_telp']; ?>"><br>
-          <?php echo $errorText['no_telp']; ?>
+          <label for="no_telp">No Telp</label><br>
+          <input type="text" name="no_telp" id="no_telp" value="<?php echo $default['no_telp']; ?>"><br>
         </p>
         <p>
-          <label for="alamat"><span class="mandatory">Alamat</span></label><br>
-          <textarea name="alamat" id="alamat" cols="30" rows="3" class="<?php echo $errorClass['alamat']; ?>"><?php echo $default['alamat']; ?></textarea>
-          <?php echo $errorText['alamat']; ?>
+          <label for="alamat">Alamat</label><br>
+          <textarea name="alamat" id="alamat" cols="30" rows="3"><?php echo $default['alamat']; ?></textarea>
         </p>
       </div>
     </div>
