@@ -1,5 +1,5 @@
 <div class="heading">
-  <h1>Detail Penjualan Per Surat Jalan</h1>
+  <h1><?php echo $_SESSION['role'] == 'admin' ? 'Detail Penjualan Per Surat Jalan' : 'Detail Penjualan Hari Ini';?></h1>
   <div class="actions">
     <a href="<?php echo BASE_URL . '/penjualan'; ?>" class="button secondary">Kembali ke daftar</a>
   </div>
@@ -33,7 +33,9 @@
       <th width="0%" rowspan="2">Bonus</th>
       <th width="20%" rowspan="2" class="align-right">Total harga</th>
       <th width="0%" rowspan="2">Metode pembayaran</th>
-      <th width="0%" rowspan="2">&nbsp;</th>
+      <?php if ($_SESSION['role'] == 'admin') : ?>
+        <th width="0%" rowspan="2">&nbsp;</th>
+      <?php endif;?>
     </tr>
     <tr>
       <th width="0%" class="left-border">Tabung besar</th>
@@ -69,7 +71,9 @@
           <td data-label="Bonus"><?php echo $v['bonus_es_tabung_kecil'];?></td>
           <td data-label="Total harga" class="align-right">Rp. <?php echo \App\Core\Utilities::formatRupiah($v['total_harga']);?></td>
           <td data-label="Metode pembayaran"><?php echo ucfirst($v['metode_pembayaran']);?></td>
-          <td data-label=""><a href="<?php echo BASE_URL . '/penjualan/form/' . $v['id_penjualan'];?>"><svg><use xlink:href="<?php echo BASE_URL; ?>/assets/images/sprite.svg#edit"></use></svg></a></td>
+          <?php if ($_SESSION['role'] == 'admin') : ?>
+            <td data-label=""><a href="<?php echo BASE_URL . '/penjualan/form/' . $v['id_penjualan'];?>"><svg><use xlink:href="<?php echo BASE_URL; ?>/assets/images/sprite.svg#edit"></use></svg></a></td>
+          <?php endif; ?>
         </tr>
     <?php endforeach; ?>
   </tbody>
@@ -82,7 +86,9 @@
       <th data-label="Bonus"><?php echo $totalBonus;?></th>
       <th data-label="Total harga" class="align-right">Rp. <?php echo \App\Core\Utilities::formatRupiah($totalHarga);?></th>
       <th data-label=""></th>
-      <th data-label=""></th>
+      <?php if ($_SESSION['role'] == 'admin') : ?>
+        <th data-label=""></th>
+      <?php endif;?>
     </tr>
   </tfoot>
 </table>

@@ -57,6 +57,12 @@ class Sidebar {
             'url' => BASE_URL . '/distribusi',
             'children' => array()
           ),
+          'penjualan' => array(
+            'icon' => 'hand-coin',
+            'label' => 'Penjualan',
+            'url' => BASE_URL . '/penjualan/sopir',
+            'children' => array()
+          ),
           'bonus' => array(
             'icon' => 'gift',
             'label' => 'Bonus',
