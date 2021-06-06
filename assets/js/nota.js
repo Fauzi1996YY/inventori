@@ -23,9 +23,12 @@
 			, bonusPar = nota.querySelector('.bonus_field')
 			, bonusNumber = nota.querySelector('.bonus_number')
 			, bonus = 0
-			, sum = function() {
+			, setTotalHarga = function() {
 				var total = parseInt(esTabungBesar.value || 0) + parseInt(esTabungKecil.value || 0) + parseInt(esSerut.value || 0);
 				totalHarga.value = formatter.format(total * hargaSatuan);
+			},
+			setBonus = function() {
+				var total = parseInt(esTabungBesar.value || 0) + parseInt(esTabungKecil.value || 0) + parseInt(esSerut.value || 0);
 				bonus = Math.floor(total / 10);
 				bonusEsTabungKecil.value = bonus;
 				bonusNumber.innerHTML = bonus;
@@ -41,24 +44,39 @@
 			})
 			;
 		
-		if (hargaSatuan > 0 && canHaveBonus > 0) {
-			totalHarga.setAttribute('readonly', true);
-
-			sum();
-
-			esTabungBesar.oninput = function(e) {
-				sum();
+		esTabungBesar.oninput = function(e) {
+			if (hargaSatuan > 0) {
+				setTotalHarga();
 			}
-
-			esTabungKecil.oninput = function(e) {
-				sum();
-			}
-
-			esSerut.oninput = function(e) {
-				sum();
+			if (canHaveBonus > 0) {
+				setBonus();
 			}
 		}
-		else {
+
+		esTabungKecil.oninput = function(e) {
+			if (hargaSatuan > 0) {
+				setTotalHarga();
+			}
+			if (canHaveBonus > 0) {
+				setBonus();
+			}
+		}
+
+		esSerut.oninput = function(e) {
+			if (hargaSatuan > 0) {
+				setTotalHarga();
+			}
+			if (canHaveBonus > 0) {
+				setBonus();
+			}
+		}
+
+		if (hargaSatuan > 0) {
+			totalHarga.setAttribute('readonly', true);
+			setTotalHarga();
+			setBonus();
+		}
+		if (canHaveBonus < 1) {
 			bonusPar.style.display = 'none';
 		}
 		
