@@ -33,6 +33,7 @@
       <th width="0%" rowspan="2">Bonus</th>
       <th width="20%" rowspan="2" class="align-right">Total harga</th>
       <th width="0%" rowspan="2">Metode pembayaran</th>
+      <th width="0%" rowspan="2">&nbsp;</th>
     </tr>
     <tr>
       <th width="0%" class="left-border">Tabung besar</th>
@@ -68,6 +69,7 @@
           <td data-label="Bonus"><?php echo $v['bonus_es_tabung_kecil'];?></td>
           <td data-label="Total harga" class="align-right">Rp. <?php echo \App\Core\Utilities::formatRupiah($v['total_harga']);?></td>
           <td data-label="Metode pembayaran"><?php echo ucfirst($v['metode_pembayaran']);?></td>
+          <td data-label=""><a href="<?php echo BASE_URL . '/penjualan/form/' . $v['id_penjualan'];?>"><svg><use xlink:href="<?php echo BASE_URL; ?>/assets/images/sprite.svg#edit"></use></svg></a></td>
         </tr>
     <?php endforeach; ?>
   </tbody>
@@ -79,6 +81,7 @@
       <th data-label="Es serut"><?php echo $totalSerut;?></th>
       <th data-label="Bonus"><?php echo $totalBonus;?></th>
       <th data-label="Total harga" class="align-right">Rp. <?php echo \App\Core\Utilities::formatRupiah($totalHarga);?></th>
+      <th data-label=""></th>
       <th data-label=""></th>
     </tr>
   </tfoot>

@@ -80,6 +80,36 @@ class Penjualan extends \App\Core\Model {
     }
   }
 
+  public function edit($data) {
+    $sql = 'update `penjualan` set
+              `es_tabung_besar` = :es_tabung_besar,
+              `es_tabung_kecil` = :es_tabung_kecil,
+              `es_serut` = :es_serut,
+              `bonus_es_tabung_kecil` = :bonus_es_tabung_kecil,
+              `berat_total` = :berat_total,
+              `total_harga` = :total_harga,
+              `metode_pembayaran` = :metode_pembayaran
+            where `id_penjualan` = :id_penjualan';
+
+    $stmt = $this->db->prepare($sql);
+    $stmt->bindParam(':es_tabung_besar', $data['es_tabung_besar']);
+    $stmt->bindParam(':es_tabung_kecil', $data['es_tabung_kecil']);
+    $stmt->bindParam(':es_serut', $data['es_serut']);
+    $stmt->bindParam(':bonus_es_tabung_kecil', $data['bonus_es_tabung_kecil']);
+    $stmt->bindParam(':berat_total', $data['berat_total']);
+    $stmt->bindParam(':total_harga', $data['total_harga']);
+    $stmt->bindParam(':metode_pembayaran', $data['metode_pembayaran']);
+    $stmt->bindParam(':id_penjualan', $data['id_penjualan']);
+    try {
+      $stmt->execute();
+      return true;
+    } catch(\PDOException $e) {
+      $this->setErrorInfo($e->getMessage());
+      $this->setErrorCode($e->getCode());
+      return false;
+    }
+  }
+
   public function getTodaysPenjualanByIdUser($id_user) {
     $sql = 'select count(a.`id_penjualan`) as `total`
             from `penjualan` a
@@ -115,6 +145,38 @@ class Penjualan extends \App\Core\Model {
     try {
       $stmt->execute();
       return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    } catch(\PDOException $e) {
+      $this->setErrorInfo($e->getMessage());
+      $this->setErrorCode($e->getCode());
+      return false;
+    }
+  }
+
+  public function getDataById($id_penjualan) {
+    $sql = 'select `penjualan`.*,
+              `surat_jalan`.`id_jalur_pengiriman`,
+                `jalur`.`nama` as `nama_jalur`,
+                `pembeli`.`nama` as `nama_pembeli`,
+                `pembeli`.`harga_satuan`,
+                `pembeli`.`metode_pembayaran`,
+                `sopir_1`.`nama` as `nama_sopir_1`,
+                `sopir_2`.`nama` as `nama_sopir_2`
+            from `penjualan` `penjualan`
+              left join `surat_jalan` `surat_jalan` on `penjualan`.`id_surat_jalan` = `surat_jalan`.`id_surat_jalan`
+                left join `jalur_pengiriman` `jalur` on `surat_jalan`.`id_jalur_pengiriman` = `jalur`.`id_jalur_pengiriman`
+                left join `user` `pembeli` on `penjualan`.`id_user` = `pembeli`.`id_user`
+                left join `user` `sopir_1` on `surat_jalan`.`id_user_1` = `sopir_1`.`id_user`
+                left join `user` `sopir_2` on `surat_jalan`.`id_user_2` = `sopir_2`.`id_user`
+            where `penjualan`.`id_penjualan` = :id_penjualan
+            ';
+    
+    $this->setSql($sql);
+    $stmt = $this->db->prepare($sql);
+    $stmt->bindParam(':id_penjualan', $id_penjualan);
+    
+    try {
+      $stmt->execute();
+      return $stmt->fetch(\PDO::FETCH_ASSOC);
     } catch(\PDOException $e) {
       $this->setErrorInfo($e->getMessage());
       $this->setErrorCode($e->getCode());
