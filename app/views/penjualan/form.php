@@ -41,7 +41,7 @@ foreach ($errorClass as $k => $v) {
 <?php \App\Core\Flasher::show('penjualan-form'); ?>
 
 <!-- Main form -->
-<form method="post" action="" class="main nota" data-harga-satuan='<?php echo $data['penjualan']['harga_satuan']; ?>' data-metode-pembayaran='<?php echo $data['penjualan']['metode_pembayaran']; ?>'>
+<form method="post" action="" class="main nota" data-harga-satuan='<?php echo $data['penjualan']['harga_satuan']; ?>' data-metode-pembayaran='<?php echo $data['penjualan']['metode_pembayaran']; ?>' data-bonus='<?php echo $data['penjualan']['bonus']; ?>'>
 
   <div class="fieldset">
     <div class="meta">

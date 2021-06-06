@@ -43,7 +43,7 @@ foreach ($errorClass as $k => $v) {
 <?php \App\Core\Flasher::show('distribusi-form'); ?>
 
 <!-- Main form -->
-<form method="post" action="" class="main nota" data-harga-satuan='<?php echo $data['pelanggan'] ? $data['pelanggan']['harga_satuan'] : ''; ?>' data-metode-pembayaran='<?php echo $data['pelanggan'] ? $data['pelanggan']['metode_pembayaran'] : ''; ?>'>
+<form method="post" action="" class="main nota" data-harga-satuan='<?php echo $data['pelanggan'] ? $data['pelanggan']['harga_satuan'] : ''; ?>' data-metode-pembayaran='<?php echo $data['pelanggan'] ? $data['pelanggan']['metode_pembayaran'] : ''; ?>' data-bonus='<?php echo $data['pelanggan'] ? $data['pelanggan']['bonus'] : ''; ?>'>
 
   <?php if ($data['pelanggan']): ?>
 

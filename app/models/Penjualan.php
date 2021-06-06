@@ -159,6 +159,7 @@ class Penjualan extends \App\Core\Model {
                 `pembeli`.`nama` as `nama_pembeli`,
                 `pembeli`.`harga_satuan`,
                 `pembeli`.`metode_pembayaran`,
+                `pembeli`.`bonus`,
                 `sopir_1`.`nama` as `nama_sopir_1`,
                 `sopir_2`.`nama` as `nama_sopir_2`
             from `penjualan` `penjualan`

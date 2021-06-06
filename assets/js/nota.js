@@ -18,7 +18,8 @@
 			, esSerut = nota.querySelector('input[name="es_serut"]')
 			, bonusEsTabungKecil = nota.querySelector('input[name="bonus_es_tabung_kecil"]')
 			, totalHarga = nota.querySelector('input[name="total_harga"]')
-			, hargaSatuan = nota.dataset.hargaSatuan
+			, hargaSatuan = parseInt(nota.dataset.hargaSatuan)
+			, canHaveBonus = parseInt(nota.dataset.bonus)
 			, bonusPar = nota.querySelector('.bonus_field')
 			, bonusNumber = nota.querySelector('.bonus_number')
 			, bonus = 0
@@ -40,7 +41,7 @@
 			})
 			;
 		
-		if (hargaSatuan > 0) {
+		if (hargaSatuan > 0 && canHaveBonus > 0) {
 			totalHarga.setAttribute('readonly', true);
 
 			sum();

@@ -136,27 +136,6 @@ class Pelanggan extends \App\Core\Model {
     }
   }
 
-  // public function getDataByIdJalurPengiriman($idJalurPengiriman) {
-  //   $sql = 'select *
-  //           from `user`
-  //           where `role` = \'pelanggan\'
-  //             and `id_jalur_pengiriman` = :id_jalur_pengiriman
-  //           order by `nama` asc';
-    
-  //   $this->setSql($sql);
-  //   $stmt = $this->db->prepare($sql);
-  //   $stmt->bindParam(':id_jalur_pengiriman', $idJalurPengiriman);
-    
-  //   try {
-  //     $stmt->execute();
-  //     return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-  //   } catch(\PDOException $e) {
-  //     $this->setErrorInfo($e->getMessage());
-  //     $this->setErrorCode($e->getCode());
-  //     return false;
-  //   }
-  // }
-
   public function add($data) {
 
     $digits = 3;
@@ -165,7 +144,7 @@ class Pelanggan extends \App\Core\Model {
     $role = 'pelanggan';
 
     $sql = 'insert into `user`
-            (`id_jalur_pengiriman`, `role`, `username`, `password`, `nama`, `no_telp`, `alamat`, `pin`, `harga_satuan`, `metode_pembayaran`, `id_user_perujuk_1`, `id_user_perujuk_2`)
+            (`id_jalur_pengiriman`, `role`, `username`, `password`, `nama`, `no_telp`, `alamat`, `pin`, `harga_satuan`, `metode_pembayaran`, `bonus`, `id_user_perujuk_1`, `id_user_perujuk_2`)
             values(:id_jalur_pengiriman, :role, :username, :password, :nama, :no_telp, :alamat, :pin, :harga_satuan, :metode_pembayaran, :id_user_perujuk_1, :id_user_perujuk_2)';
     
     $stmt = $this->db->prepare($sql);
@@ -179,6 +158,7 @@ class Pelanggan extends \App\Core\Model {
     $stmt->bindParam(':pin', $pin);
     $stmt->bindParam(':harga_satuan', $data['harga_satuan']);
     $stmt->bindParam(':metode_pembayaran', $data['metode_pembayaran']);
+    $stmt->bindParam(':bonus', $data['bonus']);
     $stmt->bindParam(':id_user_perujuk_1', $data['id_user_perujuk_1']);
     $stmt->bindParam(':id_user_perujuk_2', $data['id_user_perujuk_2']);
     
@@ -234,6 +214,7 @@ class Pelanggan extends \App\Core\Model {
             `alamat` = :alamat,
             `harga_satuan` = :harga_satuan,
             `metode_pembayaran` = :metode_pembayaran,
+            `bonus` = :bonus,
             `id_user_perujuk_1` = :id_user_perujuk_1,
             `id_user_perujuk_2` = :id_user_perujuk_2
             where `id_user` = :id_user';
@@ -246,6 +227,7 @@ class Pelanggan extends \App\Core\Model {
     $stmt->bindParam(':alamat', $data['alamat']);
     $stmt->bindParam(':harga_satuan', $data['harga_satuan']);
     $stmt->bindParam(':metode_pembayaran', $data['metode_pembayaran']);
+    $stmt->bindParam(':bonus', $data['bonus']);
     $stmt->bindParam(':id_user_perujuk_1', $data['id_user_perujuk_1']);
     $stmt->bindParam(':id_user_perujuk_2', $data['id_user_perujuk_2']);
     $stmt->bindParam(':id_user', $id);

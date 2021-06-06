@@ -65,6 +65,7 @@ class Pelanggan extends \App\Core\Controller {
       'alamat' => '',
       'harga_satuan' => 0,
       'metode_pembayaran' => '',
+      'bonus' => 0,
       'id_user_perujuk_1' => '',
       'id_user_perujuk_2' => '',
     );
@@ -80,6 +81,7 @@ class Pelanggan extends \App\Core\Controller {
         $data['default']['alamat'] = $currentData['alamat'];
         $data['default']['harga_satuan'] = $currentData['harga_satuan'];
         $data['default']['metode_pembayaran'] = $currentData['metode_pembayaran'];
+        $data['default']['bonus'] = $currentData['bonus'];
         $data['default']['id_user_perujuk_1'] = $currentData['id_user_perujuk_1'];
         $data['default']['id_user_perujuk_2'] = $currentData['id_user_perujuk_2'];
       }
@@ -99,6 +101,7 @@ class Pelanggan extends \App\Core\Controller {
       $set['alamat'] = isset($_POST['alamat']) ? trim($_POST['alamat']) : '';
       $set['harga_satuan'] = isset($_POST['harga_satuan']) ? \App\Core\Utilities::numbersOnly(trim($_POST['harga_satuan'])) : '';
       $set['metode_pembayaran'] = isset($_POST['metode_pembayaran']) ? trim($_POST['metode_pembayaran']) : '';
+      $set['bonus'] = isset($_POST['bonus']) ? trim($_POST['bonus']) : 0;
       $set['id_user_perujuk_1'] = isset($_POST['id_user_perujuk_1']) && trim($_POST['id_user_perujuk_1']) != '' ? trim($_POST['id_user_perujuk_1']) : null;
       $set['id_user_perujuk_2'] = isset($_POST['id_user_perujuk_2']) && trim($_POST['id_user_perujuk_2']) != ''? trim($_POST['id_user_perujuk_2']) : null;
       
@@ -137,6 +140,7 @@ class Pelanggan extends \App\Core\Controller {
       $data['default']['alamat'] = $set['alamat'];
       $data['default']['harga_satuan'] = $set['harga_satuan'];
       $data['default']['metode_pembayaran'] = $set['metode_pembayaran'];
+      $data['default']['bonus'] = $set['bonus'];
       $data['default']['id_user_perujuk_1'] = $set['id_user_perujuk_1'];
       $data['default']['id_user_perujuk_2'] = $set['id_user_perujuk_2'];
       

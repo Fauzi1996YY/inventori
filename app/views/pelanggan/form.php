@@ -92,7 +92,7 @@ foreach ($errorClass as $k => $v) {
 
   <div class="fieldset">
     <div class="meta">
-      <h2>Harga dan metode pembayaran</h2>
+      <h2>Penjualan</h2>
     </div>
     <div class="fields">
       <p>
@@ -105,6 +105,10 @@ foreach ($errorClass as $k => $v) {
         <label for="metode_pembayaran_cash"><input type="radio" name="metode_pembayaran" id="metode_pembayaran_cash" value="cash" <?php echo $default['metode_pembayaran'] == 'cash' ? 'checked' : ''; ?>><span class="checked-bold">Cash</span></label><br>
         <label for="metode_pembayaran_invoice"><input type="radio" name="metode_pembayaran" id="metode_pembayaran_invoice" value="invoice" <?php echo $default['metode_pembayaran'] == 'invoice' ? 'checked' : ''; ?>><span class="checked-bold">Invoice</span></label><br>
         <?php echo $errorText['metode_pembayaran']; ?>
+      </p>
+      <p>
+        <label for="">Bonus</label><br>
+        <label for="bonus"><input type="checkbox" name="bonus" id="bonus" value="1" <?php echo $default['bonus'] == '1' ? 'checked' : ''; ?>><span class="checked-bold">Dapat diberi bonus</span></label><br>
       </p>
     </div>
   </div>
