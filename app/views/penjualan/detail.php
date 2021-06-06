@@ -1,8 +1,10 @@
 <div class="heading">
   <h1><?php echo $_SESSION['role'] == 'admin' ? 'Detail Penjualan Per Surat Jalan' : 'Detail Penjualan Hari Ini';?></h1>
-  <div class="actions">
-    <a href="<?php echo BASE_URL . '/penjualan'; ?>" class="button secondary">Kembali ke daftar</a>
-  </div>
+  <?php if ($_SESSION['role'] == 'admin') : ?>
+    <div class="actions">
+      <a href="<?php echo BASE_URL . '/penjualan'; ?>" class="button secondary">Kembali ke daftar</a>
+    </div>
+  <?php endif;?>
 </div>
 
 <table class="resp">
