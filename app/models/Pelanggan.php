@@ -60,7 +60,7 @@ class Pelanggan extends \App\Core\Model {
 
     /* Filter: fulltext `nama` */
     if ($filter['search'] != '') {
-      $whereClause[] = ' match(a.`nama`, a.`no_telp`, a.`alamat`) against(\'' . $filter['search'] . '\') ';
+      $whereClause[] = ' match(a.`nama`, a.`no_telp`, a.`alamat`) against(\'' . $filter['search'] . '*\' in boolean mode) ';
       $secondSelectorText = ', match(a.`nama`, a.`no_telp`, a.`alamat`) against(\'' . $filter['search'] . '\') as `relevance` ';
       if (!isset($_GET['orderkey'])) {
         $orderKeyText = '`relevance`';
