@@ -28,8 +28,8 @@ class Sopir extends \App\Core\Model {
   public function getTodaysInactive($id_surat_jalan = 0) {
     
     $sql = 'select * from `user`
-            where `id_user` not in (select `id_user_1` from `surat_jalan` where `tanggal` = curdate() and `id_surat_jalan` != :id_surat_jalan)
-              and `id_user` not in (select `id_user_2` from `surat_jalan` where `tanggal` = curdate() and `id_surat_jalan` != :id_surat_jalan)
+            where `id_user` not in (select `id_user_1` from `surat_jalan` where `tanggal` = curdate() and `id_surat_jalan` != :id_surat_jalan and `id_user_1` is not null)
+              and `id_user` not in (select `id_user_2` from `surat_jalan` where `tanggal` = curdate() and `id_surat_jalan` != :id_surat_jalan and `id_user_2` is not null)
                 and `role` = \'sopir\'
             order by `nama`
             ';
