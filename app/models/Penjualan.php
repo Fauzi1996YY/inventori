@@ -114,7 +114,7 @@ class Penjualan extends \App\Core\Model {
     $sql = 'select count(a.`id_penjualan`) as `total`
             from `penjualan` a
               left join `surat_jalan` b on a.`id_surat_jalan` = b.`id_surat_jalan` and b.`tanggal` = curdate()
-            where a.`id_user` = :id_user
+            where a.`id_user` = :id_user and b.`tanggal` = curdate()
             ';
     
     $this->setSql($sql);
