@@ -112,7 +112,7 @@ foreach ($errorClass as $k => $v) {
       </p>
       <p>
         <label for="metode_pembayaran"><span class="mandatory">Metode pembayaran</span></label><br>
-        <select name="metode_pembayaran" id="metode_pembayaran" class="<?php echo $errorClass['metode_pembayaran'];?>" <?php echo $data['penjualan']['metode_pembayaran'] != '' ? 'disabled="disabled"' : '';?>>
+        <select name="metode_pembayaran" id="metode_pembayaran" class="<?php echo $errorClass['metode_pembayaran'];?>">
           <option value="">Pilih metode pembayaran</option>
           <option value="cash" <?php echo $data['default']['metode_pembayaran'] == 'cash' ? 'selected' : ''; ?>>Cash</option>
           <option value="invoice" <?php echo $data['default']['metode_pembayaran'] == 'invoice' ? 'selected' : ''; ?>>Invoice</option>
