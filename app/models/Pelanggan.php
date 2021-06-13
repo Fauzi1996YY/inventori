@@ -145,7 +145,7 @@ class Pelanggan extends \App\Core\Model {
 
     $sql = 'insert into `user`
             (`id_jalur_pengiriman`, `role`, `username`, `password`, `nama`, `no_telp`, `alamat`, `pin`, `harga_satuan`, `metode_pembayaran`, `bonus`, `id_user_perujuk_1`, `id_user_perujuk_2`)
-            values(:id_jalur_pengiriman, :role, :username, :password, :nama, :no_telp, :alamat, :pin, :harga_satuan, :metode_pembayaran, :id_user_perujuk_1, :id_user_perujuk_2)';
+            values(:id_jalur_pengiriman, :role, :username, :password, :nama, :no_telp, :alamat, :pin, :harga_satuan, :metode_pembayaran, :bonus, :id_user_perujuk_1, :id_user_perujuk_2)';
     
     $stmt = $this->db->prepare($sql);
     $stmt->bindParam(':id_jalur_pengiriman', $data['id_jalur_pengiriman']);
