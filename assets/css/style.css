@@ -641,6 +641,38 @@ ul.pagination {
   justify-content: space-between;
   }
 
+.search-box {
+  position: relative;
+  }
+  .search-box ul.result {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translateY(100%);
+    list-style: none;
+    background: white;
+    border: 1px solid var(--color-border-input);
+    border-top: none;
+    border-bottom: none;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .1);
+    z-index: 10;
+    color: var(--color-text-lighter);
+    }
+  .search-box ul.result li {
+    padding: 10px;
+    border-bottom: 1px solid var(--color-border-input);
+    z-index: 10;
+    }
+    .search-box ul.result li:hover {
+      background: var(--color-background-light-yellow);
+      cursor: pointer;
+      }
+  .search-box + .current-value span {
+    display: block;
+    margin-top: 5px;
+    }
+
 /**
 * Header
 ************************************************************************/

@@ -51,6 +51,30 @@ class Pelanggan extends \App\Core\Model {
     }
   }
 
+  public function search($name, $id_jalur_pengiriman) {
+    
+    $sql = 'select `id_user`, `nama`, `no_telp`, `alamat`, `bonus`, match(`nama`, `no_telp`, `alamat`) against(\'' . $name . '*\' in boolean mode) as `relevance`
+            from `user`
+            where `role` = \'pelanggan\' 
+              and match(`nama`, `no_telp`, `alamat`) against(\'' . $name . '*\' in boolean mode)
+              and `id_jalur_pengiriman` = ' . $id_jalur_pengiriman . '
+            order by `relevance` asc, `nama` asc
+            limit 10'
+            ;
+    
+    $this->setSql($sql);
+    $stmt = $this->db->prepare($sql);
+    
+    try {
+      $stmt->execute();
+      return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    } catch(\PDOException $e) {
+      $this->setErrorInfo($e->getMessage());
+      $this->setErrorCode($e->getCode());
+      return false;
+    }
+  }
+
   public function getDataByIdJalurPengiriman($id_jalur_pengiriman, $filter, $orderKey, $orderValue) {
     $whereClause = array();
     $whereClauseText = '';

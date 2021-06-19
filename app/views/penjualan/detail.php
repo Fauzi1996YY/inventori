@@ -74,7 +74,7 @@
           <td data-label="Total harga" class="align-right">Rp. <?php echo \App\Core\Utilities::formatRupiah($v['total_harga']);?></td>
           <td data-label="Metode pembayaran"><?php echo ucfirst($v['metode_pembayaran']);?></td>
           <?php if ($_SESSION['role'] == 'admin') : ?>
-            <td data-label=""><a href="<?php echo BASE_URL . '/penjualan/form/' . $v['id_penjualan'];?>"><svg><use xlink:href="<?php echo BASE_URL; ?>/assets/images/sprite.svg#edit"></use></svg></a></td>
+            <td data-label=""><a href="<?php echo BASE_URL . '/penjualan/edit/' . $v['id_penjualan'];?>"><svg><use xlink:href="<?php echo BASE_URL; ?>/assets/images/sprite.svg#edit"></use></svg></a></td>
           <?php endif; ?>
         </tr>
     <?php endforeach; ?>

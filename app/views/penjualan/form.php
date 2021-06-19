@@ -23,9 +23,9 @@ foreach ($errorClass as $k => $v) {
 ?>
 
 <div class="heading">
-  <h1>Data Penjualan</h1>
+  <h1><?php echo $data['text_header']; ?></h1>
   <div class="actions">
-    <a href="<?php echo BASE_URL . '/penjualan/' . $data['penjualan']['id_surat_jalan']; ?>" class="button secondary">Kembali ke daftar</a>
+    <a href="<?php echo BASE_URL . '/penjualan/' . $data['id_surat_jalan']; ?>" class="button secondary">Kembali ke daftar</a>
   </div>
 </div>
 
@@ -41,7 +41,7 @@ foreach ($errorClass as $k => $v) {
 <?php \App\Core\Flasher::show('penjualan-form'); ?>
 
 <!-- Main form -->
-<form method="post" action="" class="main nota" data-harga-satuan='<?php echo $data['penjualan']['harga_satuan']; ?>' data-metode-pembayaran='<?php echo $data['penjualan']['metode_pembayaran']; ?>' data-bonus='<?php echo $data['penjualan']['bonus']; ?>'>
+<form method="post" action="" class="main nota" data-harga-satuan='<?php echo $data['harga_satuan']; ?>' data-metode-pembayaran='<?php echo $data['metode_pembayaran_pembeli']; ?>' data-bonus='<?php echo $data['bonus']; ?>'>
 
   <div class="fieldset">
     <div class="meta">
@@ -50,20 +50,29 @@ foreach ($errorClass as $k => $v) {
     <div class="fields">
       <p>
         <label for="">Jalur pengiriman</label><br>
-        <strong><?php echo $data['penjualan']['nama_jalur'];?></strong>
+        <strong><?php echo $data['nama_jalur'];?></strong>
       </p>
       <p>
         <label for="">Nama sopir 1</label><br>
-        <strong><?php echo $data['penjualan']['nama_sopir_1'];?></strong>
+        <strong><?php echo $data['nama_sopir_1'];?></strong>
       </p>
       <p>
         <label for="">Nama sopir 2</label><br>
-        <strong><?php echo $data['penjualan']['nama_sopir_2'];?></strong>
+        <strong><?php echo $data['nama_sopir_2'];?></strong>
       </p>
-      <p>
+      <div>
         <label for="nama_pembeli">Nama pembeli</label><br>
-        <strong><?php echo $data['penjualan']['nama_pembeli'];?></strong>
-      </p>
+        <?php if ($data['penjualan']) : ?>
+          <strong><?php echo $data['penjualan']['nama_pembeli'];?></strong>
+        <?php else : ?>
+          <div class="search-box" data-idsj="<?php echo $data['id_jalur_pengiriman']; ?>">
+            <input type="search" placeholder="Ketik untuk mencari nama pelanggan">
+            <ul class="result"></ul>
+            <input type="hidden" name="id_user" value="0">
+          </div>
+          <strong class="current-value"></strong>
+        <?php endif; ?>
+      </div>
     </div>
   </div>
 
@@ -118,10 +127,6 @@ foreach ($errorClass as $k => $v) {
           <option value="invoice" <?php echo $data['default']['metode_pembayaran'] == 'invoice' ? 'selected' : ''; ?>>Invoice</option>
         </select><br>
         <?php echo $errorText['metode_pembayaran']; ?>
-        
-        <?php if ($data['penjualan']['metode_pembayaran'] != '') : ?>
-          <input type="hidden" name="metode_pembayaran" value="cash">
-        <?php endif;?>
       </p>
     </div>
   </div>

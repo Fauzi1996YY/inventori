@@ -45,6 +45,9 @@
 			;
 		
 		esTabungBesar.oninput = function(e) {
+			nota = document.querySelector('.nota');
+			canHaveBonus = parseInt(nota.dataset.bonus);
+			
 			if (hargaSatuan > 0) {
 				setTotalHarga();
 			}
@@ -54,6 +57,9 @@
 		}
 
 		esTabungKecil.oninput = function(e) {
+			nota = document.querySelector('.nota');
+			canHaveBonus = parseInt(nota.dataset.bonus);
+
 			if (hargaSatuan > 0) {
 				setTotalHarga();
 			}
@@ -63,6 +69,9 @@
 		}
 
 		esSerut.oninput = function(e) {
+			nota = document.querySelector('.nota');
+			canHaveBonus = parseInt(nota.dataset.bonus);
+			
 			if (hargaSatuan > 0) {
 				setTotalHarga();
 			}
@@ -72,8 +81,8 @@
 		}
 
 		if (hargaSatuan > 0) {
-			totalHarga.setAttribute('readonly', true);
-			setTotalHarga();
+			// totalHarga.setAttribute('readonly', true);
+			// setTotalHarga();
 			setBonus();
 		}
 		if (canHaveBonus < 1) {

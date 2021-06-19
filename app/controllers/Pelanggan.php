@@ -208,6 +208,32 @@ class Pelanggan extends \App\Core\Controller {
 
   }
 
+  public function boxSearch() {
+    
+    $pelanggan = $this->model('Pelanggan');
+    $data = $pelanggan->search(
+      \App\Core\Utilities::sanitizeDBInput($_POST['name']),
+      \App\Core\Utilities::sanitizeDBInput($_POST['idsj']),
+    );
+    
+    $items = '';
+    foreach ($data as $k => $v) {
+      $items.= '<li data-nama="' . $v['nama'] . '" data-id="' . $v['id_user'] . '" data-bonus="' . $v['bonus'] . '">' . $v['nama'] . '</li>';
+    }
+    if ($items == '') {
+      $items = '<li data-nama="" data-id="0" data-bonus="">Nama pelanggan tidak ditemukan</li>';
+    }
+
+    header('Content-Type: application/json');
+    
+    echo json_encode(array(
+      'name' => (isset($_POST['name']) ? $_POST['name'] : 'no-name'),
+      'idsj' => (isset($_POST['idsj']) ? $_POST['idsj'] : 'no-idsj'),
+      'items' => $items
+    ));
+    return true;
+  }
+
 }
 
 ?>
