@@ -3,6 +3,7 @@
   <?php if ($_SESSION['role'] == 'admin') : ?>
     <div class="actions">
       <a href="<?php echo BASE_URL . '/penjualan'; ?>" class="button secondary">Kembali ke daftar</a>
+      <a href="<?php echo BASE_URL . '/penjualan/tambah/' . $data['surat_jalan']['id_surat_jalan']; ?>" class="button">Tambah penjualan</a>
     </div>
   <?php endif;?>
 </div>
