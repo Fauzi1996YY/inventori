@@ -227,6 +227,37 @@ class Penjualan extends \App\Core\Controller {
 
   }
 
+  public function hapus($id_penjualan = 0) {
+
+    /* Admin only */
+    if ($_SESSION['role'] != 'admin') {
+      header('HTTP/1.0 403 Forbidden');
+      die();
+    }
+
+    $penjualan = $this->model('Penjualan');
+    $suratJalan = $this->model('SuratJalan');
+    $data = array();
+
+    $data['penjualan'] = $penjualan->getDataById($id_penjualan);
+    if (!$data['penjualan']) {
+      header('HTTP/1.0 404 Not Found');
+      die();
+    }
+
+    $data['surat_jalan'] = $suratJalan->getDataById($data['penjualan']['id_surat_jalan']);
+
+    if (isset($_POST['hapus'])) {
+      $penjualan->delete($id_penjualan);
+      \App\Core\Flasher::set('penjualan-detail', '<p><strong>Penjualan untuk `' . $data['penjualan']['nama_pembeli'] . '` berhasil dihapus</strong>', 'success');
+      header('location:' . BASE_URL . '/penjualan/' . $data['penjualan']['id_surat_jalan']);
+      die();
+    }
+
+    \App\Core\Sidebar::setActiveIcon('penjualan')::setActiveLink('penjualan');
+    $this->show('penjualan/hapus', $data);
+  }
+
   /* Todays sales for role: sopir */
   public function sopir() {
     /* Admin only */

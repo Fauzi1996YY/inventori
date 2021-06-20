@@ -110,6 +110,20 @@ class Penjualan extends \App\Core\Model {
     }
   }
 
+  public function delete($id_penjualan) {
+    $sql = 'delete from `penjualan` where `id_penjualan` = :id_penjualan';
+    $stmt = $this->db->prepare($sql);
+    $stmt->bindParam(':id_penjualan', $id_penjualan);
+    try {
+      $stmt->execute();
+      return true;
+    } catch(\PDOException $e) {
+      $this->setErrorInfo($e->getMessage());
+      $this->setErrorCode($e->getCode());
+      return false;
+    }
+  }
+
   public function getTodaysPenjualanByIdUser($id_user) {
     $sql = 'select count(a.`id_penjualan`) as `total`
             from `penjualan` a

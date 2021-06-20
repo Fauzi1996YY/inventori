@@ -8,6 +8,9 @@
   <?php endif;?>
 </div>
 
+<!-- Flasher -->
+<?php \App\Core\Flasher::show('penjualan-detail'); ?>
+
 <table class="resp">
   <thead>
     <tr>
@@ -75,7 +78,12 @@
           <td data-label="Total harga" class="align-right">Rp. <?php echo \App\Core\Utilities::formatRupiah($v['total_harga']);?></td>
           <td data-label="Metode pembayaran"><?php echo ucfirst($v['metode_pembayaran']);?></td>
           <?php if ($_SESSION['role'] == 'admin') : ?>
-            <td data-label=""><a href="<?php echo BASE_URL . '/penjualan/edit/' . $v['id_penjualan'];?>"><svg><use xlink:href="<?php echo BASE_URL; ?>/assets/images/sprite.svg#edit"></use></svg></a></td>
+            <td data-label="">
+              <div class="actions">
+                <a href="<?php echo BASE_URL . '/penjualan/edit/' . $v['id_penjualan'];?>"><svg><use xlink:href="<?php echo BASE_URL; ?>/assets/images/sprite.svg#edit"></use></svg></a>
+                <a href="<?php echo BASE_URL . '/penjualan/hapus/' . $v['id_penjualan'];?>" class="dangerous"><svg><use xlink:href="<?php echo BASE_URL; ?>/assets/images/sprite.svg#delete"></use></svg></a>
+              </div>
+            </td>
           <?php endif; ?>
         </tr>
     <?php endforeach; ?>
@@ -87,7 +95,7 @@
       <th data-label="Tabung kecil"><?php echo $totalTabungKecil;?></th>
       <th data-label="Es serut"><?php echo $totalSerut;?></th>
       <th data-label="Bonus"><?php echo $totalBonus;?></th>
-      <th data-label="Total harga" class="align-right">Rp. <?php echo \App\Core\Utilities::formatRupiah($totalHarga);?></th>
+      <th data-label="Total harga" class="align-right" nowrap>Rp. <?php echo \App\Core\Utilities::formatRupiah($totalHarga);?></th>
       <th data-label=""></th>
       <?php if ($_SESSION['role'] == 'admin') : ?>
         <th data-label=""></th>
