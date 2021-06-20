@@ -12,6 +12,8 @@ if (isset($_COOKIE[APP_NAME])) {
   setcookie(APP_NAME, $_COOKIE[APP_NAME], time() + COOKIE_TIME, '/');
 }
 
+date_default_timezone_set('Asia/Jakarta');
+
 require_once 'app/init.php';
 
 new \app\core\App();
