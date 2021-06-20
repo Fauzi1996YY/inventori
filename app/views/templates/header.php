@@ -5,8 +5,8 @@
   <title><?php echo isset($data['doc_title']) ? $data['doc_title'] . ' | ' . APP_NAME : APP_NAME; ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="identifier-URL" content="<?php echo BASE_URL;?>">
-  <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/style.css">
-  <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/handheld.css">
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/style.css?v=<?php echo APP_VERSION;?>">
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/handheld.css?v=<?php echo APP_VERSION;?>">
 </head>
 <body>
   <!-- Layout header -->

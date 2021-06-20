@@ -1,6 +1,7 @@
 <?php
 
 define('APP_NAME', 'Henskristal');
+define('APP_VERSION', rand()); /* Should be a version number in production and not rand() */
 define('COOKIE_TIME', 604800); /* In seconds */
 define('BASE_URL', 'http://localhost/henskristal');
 
