@@ -139,7 +139,7 @@ class Penjualan extends \App\Core\Controller {
     
     if (isset($_POST['submit'])) {
       $set = array();
-      $set['id_user'] = isset($_POST['id_user']) ? trim($_POST['id_user']) : '';
+      $set['id_user'] = isset($_POST['id_user']) ? (int)trim($_POST['id_user']) : 0;
       $set['es_tabung_besar'] = isset($_POST['es_tabung_besar']) ? trim($_POST['es_tabung_besar']) : '';
       $set['es_tabung_kecil'] = isset($_POST['es_tabung_kecil']) ? trim($_POST['es_tabung_kecil']) : '';
       $set['es_serut'] = isset($_POST['es_serut']) ? trim($_POST['es_serut']) : '';
@@ -148,7 +148,7 @@ class Penjualan extends \App\Core\Controller {
       $set['total_harga'] = isset($_POST['total_harga']) ? \App\Core\Utilities::numbersOnly(trim($_POST['total_harga'])) : '';
       $set['metode_pembayaran'] = isset($_POST['metode_pembayaran']) ? trim($_POST['metode_pembayaran']) : '';
       
-      if ($id_surat_jalan > 0 && $set['id_user'] == '') {
+      if ($id_surat_jalan > 0 && $set['id_user'] < 1) {
         $data['error']['header'] = 'Nama pembeli harus diisi';
       }
 

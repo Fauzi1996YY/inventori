@@ -45,7 +45,7 @@
 		input.onblur = function() {
 			setTimeout(function() {
 				hideSearchResult();
-			}, 100);
+			}, 150);
 		};
 
 		input.oninput = function(e) {
@@ -73,6 +73,11 @@
 		};
 
 		result.onclick = function(e) {
+			
+			if (e.target.tagName != 'LI') {
+				return;
+			}
+
 			var id = e.target.dataset.id
 				, nama = e.target.dataset.nama
 				, bonus = e.target.dataset.bonus
