@@ -36,9 +36,15 @@ class Sidebar {
             'children' => array()
           ),
           'penjualan' => array(
-            'icon' => 'hand-coin',
+            'icon' => 'shopping-basket',
             'label' => 'Penjualan',
             'url' => BASE_URL . '/penjualan',
+            'children' => array()
+          ),
+          'daftar-setoran' => array(
+            'icon' => 'hand-coin',
+            'label' => 'Daftar Setoran',
+            'url' => BASE_URL . '/daftar-setoran',
             'children' => array()
           )
         )

@@ -172,6 +172,32 @@ class SuratJalan extends \App\Core\Model {
     }
   }
 
+  public function getSetoranPerDate($date) {
+    $sql = 'select `surat_jalan`.`id_surat_jalan`, `surat_jalan`.`jumlah_cash`,
+              `jalur_pengiriman`.`nama` as `nama_jalur_pengiriman`,
+              sum(`biaya_operasional`.`jumlah`) as `jumlah_biaya_operasional`,
+              sum(`kasbon`.`jumlah`) as `jumlah_kasbon`
+            from `surat_jalan` `surat_jalan`
+              left join `jalur_pengiriman` `jalur_pengiriman` on `surat_jalan`.`id_jalur_pengiriman` = `jalur_pengiriman`.`id_jalur_pengiriman`
+              left join (select `id_surat_jalan`, sum(`jumlah`) as `jumlah` from `biaya_operasional` group by `id_surat_jalan`) `biaya_operasional` on `surat_jalan`.`id_surat_jalan` = `biaya_operasional`.`id_surat_jalan`
+              left join (select `id_surat_jalan`, sum(`jumlah`) as `jumlah` from `kasbon` group by `id_surat_jalan`) `kasbon` on `surat_jalan`.`id_surat_jalan` = `kasbon`.`id_surat_jalan`
+            where `surat_jalan`.`tanggal` = :tanggal and `surat_jalan`.`validasi_setoran` = 1
+            group by `surat_jalan`.`id_surat_jalan`';
+    
+    $this->setSql($sql);
+    $stmt = $this->db->prepare($sql);
+    $stmt->bindParam(':tanggal', $date);
+    
+    try {
+      $stmt->execute();
+      return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    } catch(\PDOException $e) {
+      $this->setErrorInfo($e->getMessage());
+      $this->setErrorCode($e->getCode());
+      return false;
+    }
+  }
+
 }
 
 ?>
