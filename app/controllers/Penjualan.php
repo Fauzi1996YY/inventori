@@ -269,19 +269,26 @@ class Penjualan extends \App\Core\Controller {
     $penjualan = $this->model('Penjualan');
     $suratJalan = $this->model('SuratJalan');
     $forSopir = $suratJalan->getTodaysForSopir();
+    
+    \App\Core\Sidebar::setActiveIcon('penjualan')::setActiveLink('penjualan');
+
+    if (!$forSopir) {
+      $this->show('penjualan/no-penjualan');
+      return;
+    }
+    
     $id_surat_jalan = $forSopir['id_surat_jalan'];
 
     $data = array();
     $data['surat_jalan'] = $suratJalan->getDataById($id_surat_jalan);
 
     if (!$data['surat_jalan']) {
-      echo 'Penjualan tidak bisa dilihat karena surat jalan sudah selesai';
-      die();
+      $this->show('penjualan/no-penjualan');
+      return;
     }
     $data['doc_title'] = 'Detail Penjualan Per Surat Jalan';
     $data['detail'] = $penjualan->getDataByIdSuratJalan($id_surat_jalan);
 
-    \App\Core\Sidebar::setActiveIcon('penjualan')::setActiveLink('penjualan');
     $this->show('penjualan/detail', $data);
   }
 
