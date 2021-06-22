@@ -36,7 +36,7 @@ $amount_due = $data['total_cash'];
       <th width="25%">Tanggal</th>
       <th width="25%">Kurir 1</th>
       <th width="25%">Kurir 2</th>
-      <th width="25%">Total penjualan cash</th>
+      <th width="25%" class="align-right">Total penjualan cash</th>
     </tr>
   </thead>
   <tbody>
@@ -44,7 +44,7 @@ $amount_due = $data['total_cash'];
       <td data-label="Tanggal"><?php echo \App\Core\Utilities::formatDate($data['surat_jalan']['tanggal']); ?></td>
       <td data-label="Kurir 1"><?php echo $data['surat_jalan']['nama_sopir_1']; ?></td>
       <td data-label="Kurir 2"><?php echo $data['surat_jalan']['nama_sopir_2']; ?></td>
-      <td data-label="Total penjualan cash" class="nowrap">Rp. <?php echo \App\Core\Utilities::formatRupiah($data['total_cash']); ?></td>
+      <td data-label="Total penjualan cash" class="align-right" nowrap><strong>Rp. <?php echo \App\Core\Utilities::formatRupiah($data['total_cash']); ?></strong></td>
     </tr>
   </tbody>
 </table>
