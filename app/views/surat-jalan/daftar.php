@@ -28,7 +28,7 @@
         <td>
           <div class="actions">
             <!-- Setoran -->
-            <?php if ($v['validasi_setoran'] < 1 && ($v['total_muatan'] > 0 && $v['total_muatan'] == $v['total_muatan_selesai'])) : ?>
+            <?php if ($v['total_muatan'] > 0 && $v['total_muatan'] == $v['total_muatan_selesai']) : ?>
               <a href="<?php echo BASE_URL . '/setoran/' . $v['id_surat_jalan'];?>"><svg><use xlink:href="<?php echo BASE_URL; ?>/assets/images/sprite.svg#hand-coin"></use></svg></a>
             <?php else: ?>
               <span class="unclickable"><svg><use xlink:href="<?php echo BASE_URL; ?>/assets/images/sprite.svg#hand-coin"></use></svg></span>
