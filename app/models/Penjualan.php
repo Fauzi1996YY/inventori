@@ -38,12 +38,12 @@ class Penjualan extends \App\Core\Model {
     $wc = '';
     $gb = '';
     if ($bulan < 1) {
-      $wc = 'year(`sj`.`tanggal`) = ' . (int) $tahun;
       $gb = 'month(`sj`.`tanggal`)';
+      $wc = '`sj`.`tanggal` between str_to_date(\'01, 1, ' . (int) $tahun . '\', \'%d,%m,%Y\') and str_to_date(\'31, 12, ' . (int) $tahun . '\', \'%d,%m,%Y\')';
     }
     else {
-      $wc = 'month(`sj`.`tanggal`) = ' . (int) $bulan . ' and year(`sj`.`tanggal`) = ' . (int) $tahun;
       $gb = '`sj`.`tanggal`';
+      $wc = '`sj`.`tanggal` between str_to_date(\'01, ' . (int) $bulan . ', ' . (int) $tahun . '\', \'%d,%m,%Y\') and str_to_date(\'31, ' . (int) $bulan . ', ' . (int) $tahun . '\', \'%d,%m,%Y\')';
     }
 
     $sql = 'select `sj`.`id_surat_jalan`, `sj`.`tanggal`,
