@@ -47,6 +47,9 @@ class App {
         case 'sopir':
           $this->controller = 'Distribusi';
           break;
+        case 'pelanggan':
+          $this->controller = 'Pembelian';
+          break;
       }
     }
 
