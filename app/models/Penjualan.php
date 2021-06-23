@@ -33,6 +33,42 @@ class Penjualan extends \App\Core\Model {
     }
   }
 
+  public function getPenjualanByDatePerUser($bulan = 0, $tahun = 0) {
+    
+    $wc = '';
+    $gb = '';
+    if ($bulan < 1) {
+      $wc = 'year(`sj`.`tanggal`) = ' . (int) $tahun;
+      $gb = 'month(`sj`.`tanggal`)';
+    }
+    else {
+      $wc = 'month(`sj`.`tanggal`) = ' . (int) $bulan . ' and year(`sj`.`tanggal`) = ' . (int) $tahun;
+      $gb = '`sj`.`tanggal`';
+    }
+
+    $sql = 'select `sj`.`id_surat_jalan`, `sj`.`tanggal`,
+              sum(`pjln`.`es_tabung_besar`) as `tabung_besar`, sum(`pjln`.`es_tabung_kecil`) as `tabung_kecil`, sum(`pjln`.`es_serut`) as `serut`,
+              sum(`pjln`.`total_harga`) as `total_harga`, sum(`pjln`.`berat_total`) as `berat_total`
+            from `surat_jalan` `sj`
+              left join `penjualan` `pjln` on `sj`.`id_surat_jalan` = `pjln`.`id_surat_jalan`
+            where  ' . $wc . ' and `pjln`.`id_user` = :id_user
+            group by ' . $gb . '
+            ';
+    
+    $this->setSql($sql);
+    $stmt = $this->db->prepare($sql);
+    $stmt->bindParam(':id_user', $_SESSION['id_user']);
+    
+    try {
+      $stmt->execute();
+      return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    } catch(\PDOException $e) {
+      $this->setErrorInfo($e->getMessage());
+      $this->setErrorCode($e->getCode());
+      return false;
+    }
+  }
+
   public function getMinMaxYear() {
     
     $sql = 'select min(year(`tanggal`)) as `min`, max(year(`tanggal`)) as `max`

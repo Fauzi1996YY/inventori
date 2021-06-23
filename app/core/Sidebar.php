@@ -86,6 +86,22 @@ class Sidebar {
 
     }
 
+    if ($_SESSION['role'] == 'pelanggan') {
+      
+      $links['app'] = array(
+        'header' => 'Aplikasi',
+        'links' => array(
+          'pembelian' => array(
+            'icon' => 'shopping-basket',
+            'label' => 'Pembelian',
+            'url' => BASE_URL . '/pembelian',
+            'children' => array()
+          )
+        )
+      );
+
+    }
+
     $links['akun'] = array(
       'header' => 'Akun saya',
       'links' => array(
