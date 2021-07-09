@@ -14,25 +14,49 @@ class Sidebar {
     
     if ($_SESSION['role'] == 'admin') {
       
-      $links['app'] = array(
-        'header' => 'Aplikasi',
+      // $links['app'] = array(
+      //   'header' => 'Aplikasi',
+      //   'links' => array(
+      //     'surat-jalan' => array(
+      //       'icon' => 'truck',
+      //       'label' => 'Surat jalan',
+      //       'url' => BASE_URL . '/surat-jalan',
+      //       'children' => array()
+      //     ),
+      //     'jalur-pengiriman' => array(
+      //       'icon' => 'route',
+      //       'label' => 'Jalur pengiriman',
+      //       'url' => BASE_URL . '/jalur-pengiriman',
+      //       'children' => array()
+      //     ),
+      //     'pelanggan' => array(
+      //       'icon' => 'group',
+      //       'label' => 'Pelanggan',
+      //       'url' => BASE_URL . '/pelanggan',
+      //       'children' => array()
+      //     ),
+      //     'penjualan' => array(
+      //       'icon' => 'shopping-basket',
+      //       'label' => 'Penjualan',
+      //       'url' => BASE_URL . '/penjualan',
+      //       'children' => array()
+      //     ),
+      //     'daftar-setoran' => array(
+      //       'icon' => 'hand-coin',
+      //       'label' => 'Daftar Setoran',
+      //       'url' => BASE_URL . '/daftar-setoran',
+      //       'children' => array()
+      //     )
+      //   )
+      // );
+
+      $links['penjualan'] = array(
+        'header' => 'Penjualan',
         'links' => array(
           'surat-jalan' => array(
             'icon' => 'truck',
             'label' => 'Surat jalan',
             'url' => BASE_URL . '/surat-jalan',
-            'children' => array()
-          ),
-          'jalur-pengiriman' => array(
-            'icon' => 'route',
-            'label' => 'Jalur pengiriman',
-            'url' => BASE_URL . '/jalur-pengiriman',
-            'children' => array()
-          ),
-          'pelanggan' => array(
-            'icon' => 'group',
-            'label' => 'Pelanggan',
-            'url' => BASE_URL . '/pelanggan',
             'children' => array()
           ),
           'penjualan' => array(
@@ -45,6 +69,42 @@ class Sidebar {
             'icon' => 'hand-coin',
             'label' => 'Daftar Setoran',
             'url' => BASE_URL . '/daftar-setoran',
+            'children' => array()
+          )
+        )
+      );
+
+      $links['master-data'] = array(
+        'header' => 'Master Data',
+        'links' => array(
+          'pelanggan' => array(
+            'icon' => 'group',
+            'label' => 'Pelanggan',
+            'url' => BASE_URL . '/pelanggan',
+            'children' => array()
+          ),
+          'jalur-pengiriman' => array(
+            'icon' => 'route',
+            'label' => 'Jalur pengiriman',
+            'url' => BASE_URL . '/jalur-pengiriman',
+            'children' => array()
+          ),
+          'rekening' => array(
+            'icon' => 'bank-card',
+            'label' => 'Daftar Rekening',
+            'url' => BASE_URL . '/rekening',
+            'children' => array()
+          ),
+          'kode-jurnal' => array(
+            'icon' => 'tag',
+            'label' => 'Kode Jurnal',
+            'url' => BASE_URL . '/kode-jurnal',
+            'children' => array()
+          ),
+          'jenis-aset' => array(
+            'icon' => 'flag',
+            'label' => 'Jenis Aset',
+            'url' => BASE_URL . '/jenis-aset',
             'children' => array()
           )
         )
