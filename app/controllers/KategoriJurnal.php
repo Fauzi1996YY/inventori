@@ -71,7 +71,7 @@ class KategoriJurnal extends \App\Core\Controller {
       }
 
       if ($set['nama'] == '') {
-        $data['error']['nama'] = 'Nama cabang harus diisi';
+        $data['error']['nama'] = 'Nama harus diisi';
       }
 
       $data['default']['kode'] = $set['kode'];
