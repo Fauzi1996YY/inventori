@@ -87,7 +87,7 @@ class KategoriJurnal extends \App\Core\Controller {
             die();  
           }
           else {
-            $data['error']['header'] = $kategoriJurnal->getErrorCode() == '23000' ? 'Isian `kode` atau `nama` telah dipakai' : $rekening->getErrorInfo();
+            $data['error']['header'] = $kategoriJurnal->getErrorCode() == '23000' ? 'Isian `kode` atau `nama` telah dipakai' : $kategoriJurnal->getErrorInfo();
           }
         }
         else {
@@ -99,7 +99,7 @@ class KategoriJurnal extends \App\Core\Controller {
             die();
           }
           else {
-            $data['error']['header'] = $kategoriJurnal->getErrorCode() == '23000' ? 'Isian `kode` atau `nama` telah dipakai' : $rekening->getErrorInfo();
+            $data['error']['header'] = $kategoriJurnal->getErrorCode() == '23000' ? 'Isian `kode` atau `nama` telah dipakai' : $kategoriJurnal->getErrorInfo();
           }
         }
       }
