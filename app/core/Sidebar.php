@@ -95,10 +95,10 @@ class Sidebar {
             'url' => BASE_URL . '/rekening',
             'children' => array()
           ),
-          'kode-jurnal' => array(
-            'icon' => 'tag',
-            'label' => 'Kode Jurnal',
-            'url' => BASE_URL . '/kode-jurnal',
+          'kategori-jurnal' => array(
+            'icon' => 'blocks',
+            'label' => 'Kategori Jurnal',
+            'url' => BASE_URL . '/kategori-jurnal',
             'children' => array()
           ),
           'jenis-aset' => array(
