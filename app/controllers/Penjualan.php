@@ -38,7 +38,7 @@ class Penjualan extends \App\Core\Controller {
     $data['bulan'] = isset($_GET['bulan']) ? $_GET['bulan'] : date('m');
     $data['tahun'] = isset($_GET['tahun']) ? $_GET['tahun'] : date('Y');
     
-    $data['penjualan'] = $penjualan->getPenjualanByDate(date($data['tahun'] . '-' . $data['bulan'] . '-' . $data['tanggal']));
+    $data['penjualan'] = $penjualan->getPenjualanByDate($data['tahun'] . '-' . $data['bulan'] . '-' . $data['tanggal']);
     $data['minmax'] = $penjualan->getMinMaxYear();
 
     
