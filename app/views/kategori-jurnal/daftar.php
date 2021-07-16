@@ -39,3 +39,6 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+
+<!-- Pagination -->
+<?php echo isset($data['paging']) ? $data['paging'] : ''; ?>

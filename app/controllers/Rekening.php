@@ -22,6 +22,12 @@ class Rekening extends \App\Core\Controller {
     $data['total_data'] = \App\Core\Paging::getTotalData($rekening->getSql());
     $data['paging'] = \App\Core\Paging::getLinks($data['total_data'], $page);
 
+    $last_page = \App\Core\Paging::getLastPage();
+    if ((int) $page > (int) $last_page) {
+      header('location:?page=' . $last_page);
+      die();
+    }
+
     \App\Core\Sidebar::setActiveIcon('rekening')::setActiveLink('rekening');
     $this->show('rekening/daftar', $data);
     
