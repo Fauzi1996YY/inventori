@@ -11,7 +11,6 @@
 <table class="resp">
   <thead>
     <tr>
-      <th width="0%">No</th>
       <th width="0%">Bank</th>
       <th width="0%">Kantor cabang</th>
       <th width="0%">Nomor rekening</th>
@@ -24,7 +23,6 @@
     <?php $i = 0;?>
     <?php foreach ($data['rekening'] as $k => $v): ?>
       <tr>
-        <td data-label="No"><?php echo ++$i; ?></td>
         <td data-label="Bank"><?php echo $v['bank']; ?></td>
         <td data-label="Kantor cabang"><?php echo $v['kantor_cabang']; ?></td>
         <td data-label="Nomor rekening"><?php echo $v['nomor_rekening']; ?></td>
