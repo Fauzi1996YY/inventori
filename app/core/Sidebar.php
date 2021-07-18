@@ -101,6 +101,12 @@ class Sidebar {
             'url' => BASE_URL . '/kategori-jurnal',
             'children' => array()
           ),
+          'jurnal-umum' => array(
+            'icon' => 'swap-box',
+            'label' => 'Jurnal Umum',
+            'url' => BASE_URL . '/jurnal-umum',
+            'children' => array()
+          ),
           'jenis-aset' => array(
             'icon' => 'flag',
             'label' => 'Jenis Aset',

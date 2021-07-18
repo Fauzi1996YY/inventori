@@ -16,12 +16,16 @@ class Utilities {
 	}
 
 	public static function formatRupiah ($number) {
-		$number = (float) self::numbersOnly($number);
+		$number = (float) self::numbersAndDashOnly($number);
 		return number_format($number, 0, ',', '.');
 	}
 
 	public static function numbersOnly($string) {
 		return preg_replace('/[^0-9]/', '', $string);
+	}
+
+	public static function numbersAndDashOnly($string) {
+		return preg_replace('/[^0-9|-]/', '', $string);
 	}
 
 	public static function sanitizeDBInput($i) {

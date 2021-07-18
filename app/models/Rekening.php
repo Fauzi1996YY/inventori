@@ -4,6 +4,23 @@ namespace App\Model;
 
 class Rekening extends \App\Core\Model {
 
+  public function getAllData() {
+    
+    $sql = 'select * from `rekening` order by `jenis_rekening` asc';
+    
+    $this->setSql($sql);
+    $stmt = $this->db->prepare($sql);
+    
+    try {
+      $stmt->execute();
+      return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    } catch(\PDOException $e) {
+      $this->setErrorInfo($e->getMessage());
+      $this->setErrorCode($e->getCode());
+      return false;
+    }
+  }
+
   public function getPaginatedData($limit) {
     
     $sql = 'select `rekening`.*, count(`jurnal_umum`.`id_jurnal_umum`) as `total_jurnal_umum`

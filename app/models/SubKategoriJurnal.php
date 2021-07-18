@@ -4,6 +4,31 @@ namespace App\Model;
 
 class SubKategoriJurnal extends \App\Core\Model {
 
+  public function getAllData() {
+    
+    $sql = 'select `sub_kategori_jurnal`.*,
+              `kategori_jurnal`.`nama` as `nama_kategori_jurnal`, 
+              count(`jurnal_umum`.`id_sub_kategori_jurnal`) as `total_jurnal_umum`
+            from `sub_kategori_jurnal` `sub_kategori_jurnal`
+              left join `kategori_jurnal` `kategori_jurnal` on `sub_kategori_jurnal`.`id_kategori_jurnal` = `kategori_jurnal`.`id_kategori_jurnal`
+              left join `jurnal_umum` `jurnal_umum` on `sub_kategori_jurnal`.`id_sub_kategori_jurnal` = `jurnal_umum`.`id_sub_kategori_jurnal`
+            group by `sub_kategori_jurnal`.`id_sub_kategori_jurnal`
+            order by `sub_kategori_jurnal`.`id_sub_kategori_jurnal`
+            ';
+    
+    $this->setSql($sql);
+    $stmt = $this->db->prepare($sql);
+    
+    try {
+      $stmt->execute();
+      return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    } catch(\PDOException $e) {
+      $this->setErrorInfo($e->getMessage());
+      $this->setErrorCode($e->getCode());
+      return false;
+    }
+  }
+
   public function getPaginatedData($limit, $id_kategori_jurnal = 0) {
     
     $sql = 'select `sub_kategori_jurnal`.*,

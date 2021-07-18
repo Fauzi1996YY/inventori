@@ -327,6 +327,12 @@ select {
     .button.secondary:hover svg {
       fill: var(--link-color);
       }
+  .button.secondary[disabled] {
+    opacity: .5;
+    }
+    .button.secondary[disabled]:hover {
+      color: var(--color-text-lighter);
+      }
 
 table {
   border-collapse: collapse;
