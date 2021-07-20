@@ -4,7 +4,7 @@ namespace App\Core;
 
 class Utilities {
 	
-	public static $monthNames = array('January', 'February', 'Maret', 'April', 'Mei', 'Juni', 'juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
+	public static $monthNames = array('January', 'February', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
 
 	public static function formatDate ($datetime) {
 		$datetime = explode(' ', $datetime);
