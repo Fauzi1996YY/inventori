@@ -1,10 +1,10 @@
 <div class="heading">
-  <h1>Daftar Jurnal Umum</h1>
+  <h1>Jurnal Umum</h1>
   <div class="actions">
     <?php if ($data['id_rekening'] > 0 && $data['bulan'] != '' && $data['tahun'] != '') : ?>
-      <a href="<?php echo BASE_URL;?>/jurnal-umum/form?id_rekening=<?php echo $data['id_rekening'];?>&bulan=<?php echo $data['bulan'];?>&tahun=<?php echo $data['tahun'];?>" class="button secondary">+ Buat jurnal umum baru</a>
+      <a href="<?php echo BASE_URL;?>/jurnal-umum/form?id_rekening=<?php echo $data['id_rekening'];?>&bulan=<?php echo $data['bulan'];?>&tahun=<?php echo $data['tahun'];?>" class="button secondary">+ Tambah arus kas</a>
     <?php else : ?>
-      <button class="button secondary" disabled title="Rekening, bulan, dan tahun harus dipilih terlebih dahulu">+ Buat jurnal umum baru</button>
+      <button class="button secondary" disabled title="Rekening, bulan, dan tahun harus dipilih terlebih dahulu">+ Tambah arus kas</button>
     <?php endif; ?>
   </div>
 </div>
