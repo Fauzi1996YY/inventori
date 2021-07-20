@@ -46,7 +46,7 @@ foreach ($errorClass as $k => $v) {
     </td>
     <td width="50%">
       <span class="smaller-text lighter-text">Bulan</span>
-      <span class="value"><?php echo \App\Core\Utilities::$monthNames[(int)$data['bulan']] . ' ' . $data['tahun'];?></span>
+      <span class="value"><?php echo \App\Core\Utilities::$monthNames[(int)$data['bulan'] - 1] . ' ' . $data['tahun'];?></span>
     </td>
   </tbody>
 </table>
