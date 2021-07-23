@@ -87,6 +87,11 @@ class Penjualan extends \App\Core\Controller {
     $pdf->SetAligns(array('L', 'L', 'C', 'C', 'C', 'R', 'R'));
 
     $i = 1;
+    $totalTabungBesar = 0;
+    $totalTabungKecil = 0;
+    $totalSerut = 0;
+    $totalCash = 0;
+    $totalInvoice = 0;
     foreach ($data['penjualan'] as $k => $v) {
 
       $pdf->Row(array(
@@ -98,8 +103,21 @@ class Penjualan extends \App\Core\Controller {
         , 'Rp. ' . \App\Core\Utilities::formatRupiah($v['cash'])
         , 'Rp. ' . \App\Core\Utilities::formatRupiah($v['invoice'])
       ));
+
+      $totalTabungBesar += $v['tabung_besar'];
+      $totalTabungKecil += $v['tabung_kecil'];
+      $totalSerut += $v['serut'];
+      $totalCash += $v['cash'];
+      $totalInvoice += $v['invoice'];
       
     }
+
+    $pdf->Cell(66, 8, 'Total', 1, 0, 'R', 1);
+    $pdf->Cell(18, 8, $totalTabungBesar, 1, 0, 'C', 1);
+    $pdf->Cell(18, 8, $totalTabungKecil, 1, 0, 'C', 1);
+    $pdf->Cell(18, 8, $totalSerut, 1, 0, 'C', 1);
+    $pdf->Cell(35, 8, 'Rp. ' . \App\Core\Utilities::formatRupiah($totalCash), 1, 0, 'R', 1);
+    $pdf->Cell(35, 8, 'Rp. ' . \App\Core\Utilities::formatRupiah($totalInvoice), 1, 1, 'R', 1);
 
     $pdf->Output();
   }
