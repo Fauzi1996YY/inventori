@@ -59,27 +59,12 @@ class Penjualan extends \App\Core\Controller {
   }
 
   private function pdfPenjualan($data) {
-    // $pengajuan = $this->model('Pengajuan');
+    
     $pdf = new \App\Core\Pdf();
     $pdf->SetFillColor(224, 224, 224);
     
     $pdf->SetFont('Arial', 'B', 14);
     $pdf->Cell(0, 8, 'Daftar Penjualan', 0, 1, 'C', 0);
-
-    // $dataTahun = $pengajuan->getYears();
-    // $defaultYear = '';
-    // foreach ($dataTahun as $k => $v) {
-    //   $defaultYear = $v['tahun'];
-    //   if ($v['tahun'] == date('Y')) {
-    //     break;
-    //   }
-    // }
-
-    // $filter = array();
-    // $filter['tahun'] = isset($_GET['tahun']) ? \App\Core\Util::sanitizeDBInput($_GET['tahun']) : $defaultYear;
-    // $filter['sumber_pengajuan'] = isset($_GET['sumber_pengajuan']) ? \App\Core\Util::sanitizeDBInput($_GET['sumber_pengajuan']) : '';
-    // $filter['perihal_pelaporan'] = isset($_GET['perihal_pelaporan']) ? \App\Core\Util::sanitizeDBInput($_GET['perihal_pelaporan']) : '';
-    // $filter['status'] = isset($_GET['status']) ? \App\Core\Util::sanitizeDBInput($_GET['status']) : '';
 
     $pdf->SetFont('Arial', '', 10);
     $pdf->Cell(0, 8, 'Tanggal: ' . $data['tanggal'] . ' ' . \App\Core\Utilities::$monthNames[$data['bulan'] - 1] . ' ' . $data['tahun'], 0, 1, 'L', 0);
