@@ -4,6 +4,13 @@ namespace App\Controller;
 
 class Penjualan extends \App\Core\Controller {
 
+  public function __construct() {
+    if (isset($_GET['pdf'])) {
+      require_once BASE_DIR . '/app/vendor/fpdf/fpdf.php';
+      require_once BASE_DIR . '/app/core/Pdf.php';
+    }
+  }
+
   public function index($id_surat_jalan = 0) {
 
     /* Admin only */
@@ -41,10 +48,75 @@ class Penjualan extends \App\Core\Controller {
     $data['penjualan'] = $penjualan->getPenjualanByDate($data['tahun'] . '-' . $data['bulan'] . '-' . $data['tanggal']);
     $data['minmax'] = $penjualan->getMinMaxYear();
 
+    if (isset($_GET['pdf'])) {
+      $this->pdfPenjualan($data);
+      die();
+    }
     
     \App\Core\Sidebar::setActiveIcon('penjualan')::setActiveLink('penjualan');
     $this->show('penjualan/daftar', $data);
     
+  }
+
+  private function pdfPenjualan($data) {
+    // $pengajuan = $this->model('Pengajuan');
+    $pdf = new \App\Core\Pdf();
+    $pdf->SetFillColor(224, 224, 224);
+    
+    $pdf->SetFont('Arial', 'B', 14);
+    $pdf->Cell(0, 8, 'Daftar Penjualan', 0, 1, 'C', 0);
+
+    // $dataTahun = $pengajuan->getYears();
+    // $defaultYear = '';
+    // foreach ($dataTahun as $k => $v) {
+    //   $defaultYear = $v['tahun'];
+    //   if ($v['tahun'] == date('Y')) {
+    //     break;
+    //   }
+    // }
+
+    // $filter = array();
+    // $filter['tahun'] = isset($_GET['tahun']) ? \App\Core\Util::sanitizeDBInput($_GET['tahun']) : $defaultYear;
+    // $filter['sumber_pengajuan'] = isset($_GET['sumber_pengajuan']) ? \App\Core\Util::sanitizeDBInput($_GET['sumber_pengajuan']) : '';
+    // $filter['perihal_pelaporan'] = isset($_GET['perihal_pelaporan']) ? \App\Core\Util::sanitizeDBInput($_GET['perihal_pelaporan']) : '';
+    // $filter['status'] = isset($_GET['status']) ? \App\Core\Util::sanitizeDBInput($_GET['status']) : '';
+
+    $pdf->SetFont('Arial', '', 10);
+    $pdf->Cell(0, 8, 'Tanggal: ' . $data['tanggal'] . ' ' . \App\Core\Utilities::$monthNames[$data['bulan'] - 1] . ' ' . $data['tahun'], 0, 1, 'L', 0);
+
+    $pdf->SetFont('Arial', 'B', 10);
+    $pdf->Cell(66, 8, '', 1, 0, 'L', 1);
+    $pdf->Cell(54, 8, 'Penjualan', 1, 0, 'C', 1);
+    $pdf->Cell(70, 8, '', 1, 1, 'L', 1);
+
+    $pdf->Cell(8, 8, 'No', 1, 0, 'L', 1);
+    $pdf->Cell(58, 8, 'Jalur pengiriman', 1, 0, 'L', 1);
+    $pdf->Cell(18, 8, 'Tb. besar', 1, 0, 'C', 1);
+    $pdf->Cell(18, 8, 'Tb. kecil', 1, 0, 'C', 1);
+    $pdf->Cell(18, 8, 'Serut', 1, 0, 'C', 1);
+    $pdf->Cell(35, 8, 'Cash', 1, 0, 'R', 1);
+    $pdf->Cell(35, 8, 'Invoice', 1, 1, 'R', 1);
+    
+    $pdf->SetFont('Arial', '', 10);
+    $pdf->SetWidths(array(8, 58, 18, 18, 18, 35, 35));
+    $pdf->SetAligns(array('L', 'L', 'C', 'C', 'C', 'R', 'R'));
+
+    $i = 1;
+    foreach ($data['penjualan'] as $k => $v) {
+
+      $pdf->Row(array(
+        $i++
+        , $v['nama']
+        , $v['tabung_besar']
+        , $v['tabung_kecil']
+        , $v['serut']
+        , 'Rp. ' . \App\Core\Utilities::formatRupiah($v['cash'])
+        , 'Rp. ' . \App\Core\Utilities::formatRupiah($v['invoice'])
+      ));
+      
+    }
+
+    $pdf->Output();
   }
   
   public function tambah($id_surat_jalan = 0) {
