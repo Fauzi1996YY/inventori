@@ -4,6 +4,13 @@ namespace App\Controller;
 
 class JurnalUmum extends \App\Core\Controller {
 
+  public function __construct() {
+    if (isset($_GET['pdf'])) {
+      require_once BASE_DIR . '/app/vendor/fpdf/fpdf.php';
+      require_once BASE_DIR . '/app/core/Pdf.php';
+    }
+  }
+
   public function index() {
 
     /* Admin only */
@@ -25,10 +32,78 @@ class JurnalUmum extends \App\Core\Controller {
     $data['minmax'] = $jurnalUmum->getMinMaxYear();
     $data['previous_saldo'] = $jurnalUmum->getPreviousSaldo($data['id_rekening'], $data['tahun'] . '-' . $data['bulan'] . '-01');
     $data['jurnal_umum'] = $jurnalUmum->getDataFiltered($data['id_rekening'], $data['tahun'] . '-' . $data['bulan']);
+    
+    if (isset($_GET['pdf'])) {
+      $this->pdfJurnalUmum($data);
+      die();
+    }
 
     \App\Core\Sidebar::setActiveIcon('jurnal-umum')::setActiveLink('jurnal-umum');
     $this->show('jurnal-umum/daftar', $data);
     
+  }
+
+  private function pdfJurnalUmum($data) {
+
+    $jenis_rekening = '';
+    foreach ($data['rekening'] as $k => $v) {
+      if ($v['id_rekening'] == $data['id_rekening']) {
+        $jenis_rekening = $v['jenis_rekening'];
+      }
+    }
+
+    if ($jenis_rekening == '') {
+      header('HTTP/1.0 404 Not Found');
+      die();
+    }
+    
+    $pdf = new \App\Core\Pdf();
+    $pdf->SetFillColor(224, 224, 224);
+    
+    $pdf->SetFont('Arial', 'B', 14);
+    $pdf->Cell(0, 8, 'Jurnal Umum', 0, 1, 'C', 0);
+
+    $pdf->SetFont('Arial', 'B', 10);
+    $pdf->Cell(0, 8, $jenis_rekening . ', ' . \App\Core\Utilities::$monthNames[$data['bulan'] - 1] . ' ' . $data['tahun'], 0, 1, 'L', 0);
+
+    $pdf->Cell(8, 8, 'No', 1, 0, 'L', 1);
+    $pdf->Cell(34, 8, 'Tanggal', 1, 0, 'L', 1);
+    $pdf->Cell(58, 8, 'Keterangan', 1, 0, 'L', 1);
+    $pdf->Cell(30, 8, 'kredit', 1, 0, 'R', 1);
+    $pdf->Cell(30, 8, 'Debit', 1, 0, 'R', 1);
+    $pdf->Cell(30, 8, 'Saldo', 1, 1, 'R', 1);
+    
+    $pdf->SetFont('Arial', '', 10);
+    $pdf->SetWidths(array(8, 34, 58, 30, 30, 30));
+    $pdf->SetAligns(array('L', 'L', 'L', 'R', 'R', 'R'));
+
+    $i = 1;
+    $saldo = $data['previous_saldo']['jumlah'];
+    foreach ($data['jurnal_umum'] as $k => $v) {
+
+      $kredit = '';
+      $debit = '';
+      if ($v['arus_kas'] == 'masuk') {
+        $kredit = 'Rp. ' . \App\Core\Utilities::formatRupiah($v['jumlah']);
+        $saldo = $saldo + $v['jumlah'];
+      }
+      else {
+        $debit = 'Rp. ' . \App\Core\Utilities::formatRupiah($v['jumlah']);
+        $saldo = $saldo - $v['jumlah'];
+      }
+
+      $pdf->Row(array(
+        $i++
+        , \App\Core\Utilities::formatDate($v['tanggal'])
+        , $v['nama']
+        , $kredit
+        , $debit
+        , 'Rp. ' . \App\Core\Utilities::formatRupiah($saldo)
+      ));
+
+    }
+
+    $pdf->Output();
   }
 
   public function form($id = 0) {
