@@ -45,16 +45,11 @@ class JurnalUmum extends \App\Core\Controller {
 
   private function pdfJurnalUmum($data) {
 
-    $jenis_rekening = '';
+    $jenis_rekening = 'Rekening belum dipilih';
     foreach ($data['rekening'] as $k => $v) {
       if ($v['id_rekening'] == $data['id_rekening']) {
         $jenis_rekening = $v['jenis_rekening'];
       }
-    }
-
-    if ($jenis_rekening == '') {
-      header('HTTP/1.0 404 Not Found');
-      die();
     }
     
     $pdf = new \App\Core\Pdf();
