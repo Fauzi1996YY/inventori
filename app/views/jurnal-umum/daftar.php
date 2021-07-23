@@ -12,30 +12,36 @@
 <!-- Flasher -->
 <?php \App\Core\Flasher::show('jurnal-umum-daftar'); ?>
 
-<form action="" method="get" class="filter noborder">
-  <select name="id_rekening" id="tanggal">
-    <option value="">Pilih rekening</option>
-    <?php foreach($data['rekening'] as $k => $v) : ?>
-      <option value="<?php echo $v['id_rekening'];?>" <?php echo $v['id_rekening'] == $data['id_rekening'] ? 'selected' : '';?>><?php echo $v['jenis_rekening'];?></option>
-    <?php endforeach; ?>
-  </select>
+<div class="dual-container">
+  <form action="" method="get" class="filter noborder">
+    <select name="id_rekening" id="tanggal">
+      <option value="">Pilih rekening</option>
+      <?php foreach($data['rekening'] as $k => $v) : ?>
+        <option value="<?php echo $v['id_rekening'];?>" <?php echo $v['id_rekening'] == $data['id_rekening'] ? 'selected' : '';?>><?php echo $v['jenis_rekening'];?></option>
+      <?php endforeach; ?>
+    </select>
 
-  <select name="bulan" id="bulan">
-    <option value="">Pilih bulan</option>
-    <?php for ($i = 1; $i <= count(\App\Core\Utilities::$monthNames); $i++) : ?>
-      <option value="<?php echo $i; ?>" <?php echo $i == $data['bulan'] ? 'selected' : '';?>><?php echo \App\Core\Utilities::$monthNames[$i-1]; ?></option>
-    <?php endfor;?>
-  </select>
+    <select name="bulan" id="bulan">
+      <option value="">Pilih bulan</option>
+      <?php for ($i = 1; $i <= count(\App\Core\Utilities::$monthNames); $i++) : ?>
+        <option value="<?php echo $i; ?>" <?php echo $i == $data['bulan'] ? 'selected' : '';?>><?php echo \App\Core\Utilities::$monthNames[$i-1]; ?></option>
+      <?php endfor;?>
+    </select>
 
-  <select name="tahun" id="tahun">
-    <option value="">Pilih tahun</option>
-    <?php for ($i = $data['minmax']['min']; $i <= $data['minmax']['max']; $i++) : ?>
-      <option value="<?php echo $i; ?>" <?php echo $i == $data['tahun'] ? 'selected' : '';?>><?php echo $i; ?></option>
-    <?php endfor;?>
-  </select>
+    <select name="tahun" id="tahun">
+      <option value="">Pilih tahun</option>
+      <?php for ($i = $data['minmax']['min']; $i <= $data['minmax']['max']; $i++) : ?>
+        <option value="<?php echo $i; ?>" <?php echo $i == $data['tahun'] ? 'selected' : '';?>><?php echo $i; ?></option>
+      <?php endfor;?>
+    </select>
 
-  <button class="button">Cari</button>
-</form>
+    <button class="button">Cari</button>
+  </form>
+  <?php if ($data['id_rekening'] > 0 && $data['bulan'] != '' && $data['tahun'] != '') : ?>
+    <a href="<?php echo BASE_URL . '/jurnal-umum?id_rekening=' . $data['id_rekening'] . '&bulan=' . $data['bulan'] . '&tahun=' . $data['tahun'] . '&pdf=true';?>" target="_blank" class="button secondary">Unduh PDF</a>
+  <?php endif; ?>
+  
+</div>
 
 <table class="resp">
   <thead>

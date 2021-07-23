@@ -2,30 +2,33 @@
   <h1>Daftar Setoran</h1>
 </div>
 
-<form action="" method="get" class="filter noborder">
-  <select name="tanggal" id="tanggal">
-    <option value="">Pilih tanggal</option>
-    <?php for ($i = 1; $i <= 31; $i++) : ?>
-      <option value="<?php echo $i; ?>" <?php echo $i == $data['tanggal'] ? 'selected' : '';?>><?php echo strlen($i) < 2 ? '0' . $i : $i; ?></option>
-    <?php endfor;?>
-  </select>
+<div class="dual-container">
+  <form action="" method="get" class="filter noborder">
+    <select name="tanggal" id="tanggal">
+      <option value="">Pilih tanggal</option>
+      <?php for ($i = 1; $i <= 31; $i++) : ?>
+        <option value="<?php echo $i; ?>" <?php echo $i == $data['tanggal'] ? 'selected' : '';?>><?php echo strlen($i) < 2 ? '0' . $i : $i; ?></option>
+      <?php endfor;?>
+    </select>
 
-  <select name="bulan" id="bulan">
-    <option value="">Pilih bulan</option>
-    <?php for ($i = 1; $i <= count(\App\Core\Utilities::$monthNames); $i++) : ?>
-      <option value="<?php echo $i; ?>" <?php echo $i == $data['bulan'] ? 'selected' : '';?>><?php echo \App\Core\Utilities::$monthNames[$i-1]; ?></option>
-    <?php endfor;?>
-  </select>
+    <select name="bulan" id="bulan">
+      <option value="">Pilih bulan</option>
+      <?php for ($i = 1; $i <= count(\App\Core\Utilities::$monthNames); $i++) : ?>
+        <option value="<?php echo $i; ?>" <?php echo $i == $data['bulan'] ? 'selected' : '';?>><?php echo \App\Core\Utilities::$monthNames[$i-1]; ?></option>
+      <?php endfor;?>
+    </select>
 
-  <select name="tahun" id="tahun">
-    <option value="">Pilih tahun</option>
-    <?php for ($i = $data['minmax']['min']; $i <= $data['minmax']['max']; $i++) : ?>
-      <option value="<?php echo $i; ?>" <?php echo $i == $data['tahun'] ? 'selected' : '';?>><?php echo $i; ?></option>
-    <?php endfor;?>
-  </select>
+    <select name="tahun" id="tahun">
+      <option value="">Pilih tahun</option>
+      <?php for ($i = $data['minmax']['min']; $i <= $data['minmax']['max']; $i++) : ?>
+        <option value="<?php echo $i; ?>" <?php echo $i == $data['tahun'] ? 'selected' : '';?>><?php echo $i; ?></option>
+      <?php endfor;?>
+    </select>
 
-  <button class="button">Cari</button>
-</form>
+    <button class="button">Cari</button>
+  </form>
+  <a href="<?php echo BASE_URL . '/daftar-setoran?tanggal=' . $data['tanggal'] . '&bulan=' . $data['bulan'] . '&tahun=' . $data['tahun'] . '&pdf=true';?>" target="_blank" class="button secondary">Unduh PDF</a>
+</div>
 
 <table class="resp">
   <thead>
