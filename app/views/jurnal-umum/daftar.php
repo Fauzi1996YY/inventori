@@ -60,7 +60,7 @@
       <tr>
         <td data-label="No"><?php echo ++$i; ?></td>
         <td data-label="Tanggal" class="nowrap"><?php echo \App\Core\Utilities::formatDate($v['tanggal']); ?></td>
-        <td data-label="Keterangan"><?php echo $v['nama']; ?> <?php echo $v['arus_kas'];?></td>
+        <td data-label="Keterangan"><?php echo $v['nama']; ?></td>
         <td data-label="Kredit" class="nowrap align-right">
           <?php
           
