@@ -32,7 +32,25 @@
     </tr>
   </thead>
   <tbody>
+    
+    <?php
+    $jumlah_tabung_besar = 0;
+    $jumlah_tabung_kecil = 0;
+    $jumlah_serut = 0;
+    $jumlah_total_berat = 0;
+    $jumlah_harga = 0;
+    ?>
+
     <?php foreach ($data['penjualan'] as $k => $v) : ?>
+
+      <?php
+      $jumlah_tabung_besar+= $v['tabung_besar'];
+      $jumlah_tabung_kecil+= $v['tabung_kecil'];
+      $jumlah_serut+= $v['serut'];
+      $jumlah_total_berat+= $v['berat_total'];
+      $jumlah_harga+= $v['total_harga'];
+      ?>
+
       <tr>
         <?php $when = \App\Core\Utilities::formatDate($v['tanggal']); ?>
         <td data-label="Tanggal" nowrap><?php echo $data['bulan'] < 1 ? substr($when, 3) : $when; ?></td>
@@ -46,10 +64,10 @@
   </tbody>
   <tfoot>
     <th>Total</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th class="align-right" nowrap data-label="Tabung besar"><?php echo $jumlah_tabung_besar; ?> Kantong</th>
+    <th class="align-right" nowrap data-label="Tabung kecil"><?php echo $jumlah_tabung_kecil; ?> Kantong</th>
+    <th class="align-right" nowrap data-label="Serut"><?php echo $jumlah_serut; ?> Kantong</th>
+    <th class="align-right" nowrap data-label="Berat"><?php echo $jumlah_total_berat; ?> Kg</th>
+    <th class="align-right" nowrap data-label="Harga">Rp. <?php echo \App\Core\Utilities::formatRupiah($jumlah_harga); ?></th>
   </tfoot>
 </table>
