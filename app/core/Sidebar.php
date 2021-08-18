@@ -13,42 +13,6 @@ class Sidebar {
     $links = array();
     
     if ($_SESSION['role'] == 'admin') {
-      
-      // $links['app'] = array(
-      //   'header' => 'Aplikasi',
-      //   'links' => array(
-      //     'surat-jalan' => array(
-      //       'icon' => 'truck',
-      //       'label' => 'Surat jalan',
-      //       'url' => BASE_URL . '/surat-jalan',
-      //       'children' => array()
-      //     ),
-      //     'jalur-pengiriman' => array(
-      //       'icon' => 'route',
-      //       'label' => 'Jalur pengiriman',
-      //       'url' => BASE_URL . '/jalur-pengiriman',
-      //       'children' => array()
-      //     ),
-      //     'pelanggan' => array(
-      //       'icon' => 'group',
-      //       'label' => 'Pelanggan',
-      //       'url' => BASE_URL . '/pelanggan',
-      //       'children' => array()
-      //     ),
-      //     'penjualan' => array(
-      //       'icon' => 'shopping-basket',
-      //       'label' => 'Penjualan',
-      //       'url' => BASE_URL . '/penjualan',
-      //       'children' => array()
-      //     ),
-      //     'daftar-setoran' => array(
-      //       'icon' => 'hand-coin',
-      //       'label' => 'Daftar Setoran',
-      //       'url' => BASE_URL . '/daftar-setoran',
-      //       'children' => array()
-      //     )
-      //   )
-      // );
 
       $links['penjualan'] = array(
         'header' => 'Penjualan',
@@ -133,18 +97,6 @@ class Sidebar {
             'icon' => 'hand-coin',
             'label' => 'Penjualan',
             'url' => BASE_URL . '/penjualan/sopir',
-            'children' => array()
-          ),
-          'bonus' => array(
-            'icon' => 'gift',
-            'label' => 'Bonus',
-            'url' => BASE_URL . '/bonus',
-            'children' => array()
-          ),
-          'kasbon' => array(
-            'icon' => 'scale',
-            'label' => 'Kasbon',
-            'url' => BASE_URL . '/kasbon',
             'children' => array()
           )
         )
