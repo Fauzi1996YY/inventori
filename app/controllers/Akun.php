@@ -16,9 +16,7 @@ class Akun extends \App\Core\Controller {
     $currentData = $user->getDataById($_SESSION['id_user']);
     if ($currentData) {
       $data['default'] = array(
-        'nama' => $currentData['nama'],
-        'alamat' => $currentData['alamat'],
-        'no_telp' => $currentData['no_telp']
+        'nama' => $currentData['nama']
       );
     }
     else {
@@ -31,9 +29,7 @@ class Akun extends \App\Core\Controller {
       $set['password'] = isset($_POST['password']) ? $_POST['password'] : '';
       $set['repassword'] = isset($_POST['repassword']) ? $_POST['repassword'] : '';
       $set['nama'] = isset($_POST['nama']) ? trim($_POST['nama']) : '';
-      $set['alamat'] = isset($_POST['alamat']) ? trim($_POST['alamat']) : '';
-      $set['no_telp'] = isset($_POST['no_telp']) ? trim($_POST['no_telp']) : '';
-
+      
       if ($set['password'] != '' && $set['password'] != $set['repassword']) {
         $data['error']['repassword'] = 'Ketik ulang password harus sama';
       }
@@ -41,14 +37,9 @@ class Akun extends \App\Core\Controller {
       if ($set['nama'] == '') {
         $data['error']['nama'] = 'Nama harus diisi';
       }
-      if ($set['no_telp'] == '') {
-        $data['error']['no_telp'] = 'No telepon harus diisi';
-      }
 
       $data['default'] = array(
-        'nama' => $set['nama'],
-        'alamat' => $set['alamat'],
-        'no_telp' => $set['no_telp']
+        'nama' => $set['nama']
       );
     
       if (count($data['error']) < 1) {

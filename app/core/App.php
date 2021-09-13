@@ -40,17 +40,15 @@ class App {
       }
     }
     else {
-      switch ($_SESSION['role']) {
-        case 'admin':
-          $this->controller = 'SuratJalan';
-          break;
-        case 'sopir':
-          $this->controller = 'Distribusi';
-          break;
-        case 'pelanggan':
-          $this->controller = 'Pembelian';
-          break;
-      }
+      $this->controller = 'Dashboard';
+      // switch ($_SESSION['role']) {
+      //   case 'admin':
+      //     $this->controller = 'Users';
+      //     break;
+      //   case 'staff':
+      //     $this->controller = 'Distribusi';
+      //     break;
+      // }
     }
 
     $targetController = 'app/controllers/' . $this->controller . '.php';

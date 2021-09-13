@@ -45,12 +45,10 @@ class User extends \App\Core\Model {
   }
 
   public function editAkun($data) {
-    $sql = 'update `user` set `password` = :password, `nama` = :nama, `alamat` = :alamat, `no_telp` = :no_telp where `id_user` = :id_user';
+    $sql = 'update `user` set `password` = :password, `nama` = :nama where `id_user` = :id_user';
     $stmt = $this->db->prepare($sql);
     $stmt->bindParam(':password', $data['password']);
     $stmt->bindParam(':nama', $data['nama']);
-    $stmt->bindParam(':alamat', $data['alamat']);
-    $stmt->bindParam(':no_telp', $data['no_telp']);
     $stmt->bindParam(':id_user', $_SESSION['id_user']);
     try {
       $stmt->execute();

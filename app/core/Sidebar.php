@@ -12,112 +12,49 @@ class Sidebar {
     
     $links = array();
     
+    $links['penjualan'] = array(
+      'header' => 'Inventori',
+      'links' => array(
+        'barang' => array(
+          'icon' => 'truck',
+          'label' => 'Barang',
+          'url' => BASE_URL . '/barang',
+          'children' => array()
+        ),
+        'peminjaman' => array(
+          'icon' => 'shopping-basket',
+          'label' => 'Peminjaman',
+          'url' => BASE_URL . '/peminjaman',
+          'children' => array()
+        )
+      )
+    );
+
+    $links['master-data'] = array(
+      'header' => 'Master Data',
+      'links' => array(
+        'kategori' => array(
+          'icon' => 'group',
+          'label' => 'Kategori',
+          'url' => BASE_URL . '/kategori',
+          'children' => array()
+        ),
+        'anggota' => array(
+          'icon' => 'route',
+          'label' => 'Anggota',
+          'url' => BASE_URL . '/anggota',
+          'children' => array()
+        )
+      )
+    );
+
     if ($_SESSION['role'] == 'admin') {
-
-      $links['penjualan'] = array(
-        'header' => 'Penjualan',
-        'links' => array(
-          'surat-jalan' => array(
-            'icon' => 'truck',
-            'label' => 'Surat jalan',
-            'url' => BASE_URL . '/surat-jalan',
-            'children' => array()
-          ),
-          'penjualan' => array(
-            'icon' => 'shopping-basket',
-            'label' => 'Penjualan',
-            'url' => BASE_URL . '/penjualan',
-            'children' => array()
-          ),
-          'daftar-setoran' => array(
-            'icon' => 'hand-coin',
-            'label' => 'Daftar Setoran',
-            'url' => BASE_URL . '/daftar-setoran',
-            'children' => array()
-          )
-        )
+      $links['master-data']['links']['staff'] = array(
+        'icon' => 'bank-card',
+        'label' => 'Staff Karyawan',
+        'url' => BASE_URL . '/staff',
+        'children' => array()
       );
-
-      $links['master-data'] = array(
-        'header' => 'Master Data',
-        'links' => array(
-          'pelanggan' => array(
-            'icon' => 'group',
-            'label' => 'Pelanggan',
-            'url' => BASE_URL . '/pelanggan',
-            'children' => array()
-          ),
-          'jalur-pengiriman' => array(
-            'icon' => 'route',
-            'label' => 'Jalur pengiriman',
-            'url' => BASE_URL . '/jalur-pengiriman',
-            'children' => array()
-          ),
-          'rekening' => array(
-            'icon' => 'bank-card',
-            'label' => 'Daftar Rekening',
-            'url' => BASE_URL . '/rekening',
-            'children' => array()
-          ),
-          'kategori-jurnal' => array(
-            'icon' => 'blocks',
-            'label' => 'Kategori Jurnal',
-            'url' => BASE_URL . '/kategori-jurnal',
-            'children' => array()
-          ),
-          'jurnal-umum' => array(
-            'icon' => 'swap-box',
-            'label' => 'Jurnal Umum',
-            'url' => BASE_URL . '/jurnal-umum',
-            'children' => array()
-          ),
-          'jenis-aset' => array(
-            'icon' => 'flag',
-            'label' => 'Jenis Aset',
-            'url' => BASE_URL . '/jenis-aset',
-            'children' => array()
-          )
-        )
-      );
-
-    }
-
-    if ($_SESSION['role'] == 'sopir') {
-      
-      $links['app'] = array(
-        'header' => 'Aplikasi',
-        'links' => array(
-          'distribusi' => array(
-            'icon' => 'truck',
-            'label' => 'Distribusi',
-            'url' => BASE_URL . '/distribusi',
-            'children' => array()
-          ),
-          'penjualan' => array(
-            'icon' => 'hand-coin',
-            'label' => 'Penjualan',
-            'url' => BASE_URL . '/penjualan/sopir',
-            'children' => array()
-          )
-        )
-      );
-
-    }
-
-    if ($_SESSION['role'] == 'pelanggan') {
-      
-      $links['app'] = array(
-        'header' => 'Aplikasi',
-        'links' => array(
-          'pembelian' => array(
-            'icon' => 'shopping-basket',
-            'label' => 'Pembelian',
-            'url' => BASE_URL . '/pembelian',
-            'children' => array()
-          )
-        )
-      );
-
     }
 
     $links['akun'] = array(

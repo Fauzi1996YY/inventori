@@ -12,7 +12,7 @@
   <!-- Layout header -->
   <div class="header">
     <div class="branding">
-        <span class="toggle"><svg><use xlink:href="<?php echo BASE_URL; ?>/assets/images/sprite.svg#menu"></use></svg></span><a href="<?php echo BASE_URL; ?>" class="logo"><img src="<?php echo BASE_URL; ?>/assets/images/logo.png" alt="Logo image"></a>
+        <span class="toggle"><svg><use xlink:href="<?php echo BASE_URL; ?>/assets/images/sprite.svg#menu"></use></svg></span><a href="<?php echo BASE_URL; ?>" class="logo"><span>Aplikasi Inventori</span></a>
     </div>
     <div class="extras"></div>
   </div>

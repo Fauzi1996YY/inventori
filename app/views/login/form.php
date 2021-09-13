@@ -17,8 +17,8 @@
     </div>
     <?php endif; ?>
     <p>
-      <label for="username">Username</label><br>
-      <input type="text" name="username">
+      <label for="email">Alamat email</label><br>
+      <input type="email" name="email">
     </p>
     <p>
       <label for="password">Password</label><br>

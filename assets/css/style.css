@@ -723,6 +723,7 @@ ul.pagination {
       height: 100%;
       width: 100%;
       display: block;
+      color: inherit;
       }
     .header .branding img {
       height: 100%;
@@ -730,6 +731,12 @@ ul.pagination {
       display: block;
       /* Remove later */
       /* margin-left: -6px; */
+      }
+    .header .branding .logo span {
+      font-size: 22px;
+      display: flex;
+      height: 100%;
+      align-items: center;
       }
   .header .extras {
     padding: 10px 10px 10px var(--gap-main-horizontal);

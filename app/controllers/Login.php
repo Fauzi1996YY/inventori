@@ -11,11 +11,11 @@ class Login extends \App\Core\Controller {
     $data['doc_title'] = 'Login';
     
     if (isset($_POST['login'])) {
-      if (\App\Core\Login::logUserIn($_POST['username'], $_POST['password'])) {
+      if (\App\Core\Login::logUserIn($_POST['email'], $_POST['password'])) {
         header('location:' . BASE_URL);
       }
       else {
-        $data['error'] = 'Username or password is not valid';
+        $data['error'] = 'Email or password is not valid';
       }
     }
 
