@@ -53,7 +53,7 @@ foreach ($errorClass as $k => $v) {
             <option value="<?php echo $v['id_kategori'];?>" <?php echo $default['id_kategori'] == $v['id_kategori'] ? 'selected' : ''; ?>><?php echo $v['kode'] . ' - ' . $v['nama']; ?></option>
           <?php endforeach; ?>
         </select><br>
-        <?php echo $errorText['kode']; ?>
+        <?php echo $errorText['id_kategori']; ?>
       </p>
       <p>
         <label for="kode"><span class="mandatory">Kode</span></label><br>
