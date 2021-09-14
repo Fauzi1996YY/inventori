@@ -41,7 +41,8 @@ class Barang extends \App\Core\Controller {
       'kode' => '',
       'nama' => '',
       'brand' => '',
-      'tahun_pembuatan' => ''
+      'tahun_pembuatan' => '',
+      'jumlah' => ''
     );
 
     $currentData = array();
@@ -53,6 +54,7 @@ class Barang extends \App\Core\Controller {
         $data['default']['nama'] = $currentData['nama'];
         $data['default']['brand'] = $currentData['brand'];
         $data['default']['tahun_pembuatan'] = $currentData['tahun_pembuatan'];
+        $data['default']['jumlah'] = $currentData['jumlah'];
       }
       else {
         header('HTTP/1.0 403 Forbidden');
@@ -67,6 +69,7 @@ class Barang extends \App\Core\Controller {
       $set['nama'] = isset($_POST['nama']) ? trim($_POST['nama']) : '';
       $set['brand'] = isset($_POST['brand']) ? trim($_POST['brand']) : '';
       $set['tahun_pembuatan'] = isset($_POST['tahun_pembuatan']) ? trim($_POST['tahun_pembuatan']) : '';
+      $set['jumlah'] = isset($_POST['tahun_pembuatan']) ? trim($_POST['jumlah']) : '';
       
       if ($set['id_kategori'] == '') {
         $data['error']['id_kategori'] = 'Kategori harus diisi';
@@ -80,11 +83,16 @@ class Barang extends \App\Core\Controller {
         $data['error']['nama'] = 'Nama harus diisi';
       }
 
+      if ($set['jumlah'] == '') {
+        $data['error']['jumlah'] = 'Jumlah harus diisi';
+      }
+
       $data['default']['id_kategori'] = $set['id_kategori'];
       $data['default']['kode'] = $set['kode'];
       $data['default']['nama'] = $set['nama'];
       $data['default']['brand'] = $set['brand'];
       $data['default']['tahun_pembuatan'] = $set['tahun_pembuatan'];
+      $data['default']['jumlah'] = $set['jumlah'];
       
       if (count($data['error']) < 1) {
         if ($id > 0) {

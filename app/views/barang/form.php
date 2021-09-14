@@ -5,7 +5,8 @@ $errorClass = array(
   'kode' => '',
   'nama' => '',
   'brand' => '',
-  'tahun_pembuatan' => ''
+  'tahun_pembuatan' => '',
+  'jumlah' => ''
 );
 
 $errorText = array();
@@ -73,6 +74,11 @@ foreach ($errorClass as $k => $v) {
         <label for="tahun_pembuatan">Tahun pembuatan</label><br>
         <input type="number" name="tahun_pembuatan" id="tahun_pembuatan" class="one-fourth <?php echo $errorClass['tahun_pembuatan'];?>" value="<?php echo $default['tahun_pembuatan']; ?>" min="0000" max="9999" size="4"><br>
         <?php echo $errorText['tahun_pembuatan']; ?>
+      </p>
+      <p>
+        <label for="jumlah"><span class="mandatory">Jumlah</span></label><br>
+        <input type="number" name="jumlah" id="jumlah" class="one-fourth <?php echo $errorClass['jumlah'];?>" value="<?php echo $default['jumlah']; ?>"><br>
+        <?php echo $errorText['jumlah']; ?>
       </p>
     </div>
   </div>
