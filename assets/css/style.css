@@ -124,6 +124,7 @@ textarea {
   input[type="text"].error,
   input[type="time"].error,
   input[type="number"].error,
+  input[type="date"].error,
   select.error,
   textarea.error {
     border-color: var(--color-border-error);
