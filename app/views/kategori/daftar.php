@@ -24,7 +24,7 @@
         <td data-label="Kode" class="nowrap"><?php echo $v['kode']; ?></td>
         <td data-label="Nama" class="nowrap"><?php echo $v['nama']; ?></td>
         <td data-label="Keterangan"><?php echo $v['keterangan']; ?></td>
-        <td data-label="Jumlah barang" class="nowrap align-right"><strong><a href="<?php echo BASE_URL . '/barang/' . $v['id_kategori'];?>"><?php echo $v['total_barang']; ?> item</a></strong></td>
+        <td data-label="Jumlah barang" class="nowrap align-right"><?php echo $v['total_barang']; ?> item</td>
         <td>
           <div class="actions">
             <a href="<?php echo BASE_URL . '/kategori/form/' . $v['id_kategori'];?>"><svg><use xlink:href="<?php echo BASE_URL; ?>/assets/images/sprite.svg#edit"></use></svg></a>
