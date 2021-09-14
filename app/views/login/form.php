@@ -8,7 +8,7 @@
 </head>
 <body>
   <form action="" method="post" class="login">
-    <h1>Henskristal</h1>
+    <h1>Aplikasi Inventori</h1>
     <p>Selamat datang! Silakan gunakan form di bawah untuk masuk ke aplikasi</p>
     <?php if ($data['error'] != '') : ?>
     <div class="notification error">
