@@ -10,7 +10,7 @@ class Kategori extends \App\Core\Model {
             from `kategori` `kategori`
               left join `barang` `barang` on `kategori`.`id_kategori` = `barang`.`id_kategori`
             group by `kategori`.`id_kategori`
-            order by `kategori`.`id_kategori`
+            order by `kategori`.`kode`, `kategori`.`id_kategori`
             ';
     
     $this->setSql($sql);
