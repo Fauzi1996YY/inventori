@@ -16,13 +16,13 @@ class Sidebar {
       'header' => 'Inventori',
       'links' => array(
         'barang' => array(
-          'icon' => 'truck',
+          'icon' => 'blocks',
           'label' => 'Barang',
           'url' => BASE_URL . '/barang',
           'children' => array()
         ),
         'peminjaman' => array(
-          'icon' => 'shopping-basket',
+          'icon' => 'anticlockwise',
           'label' => 'Peminjaman',
           'url' => BASE_URL . '/peminjaman',
           'children' => array()
@@ -34,13 +34,13 @@ class Sidebar {
       'header' => 'Master Data',
       'links' => array(
         'kategori' => array(
-          'icon' => 'group',
+          'icon' => 'tag',
           'label' => 'Kategori',
           'url' => BASE_URL . '/kategori',
           'children' => array()
         ),
         'anggota' => array(
-          'icon' => 'route',
+          'icon' => 'award',
           'label' => 'Anggota',
           'url' => BASE_URL . '/anggota',
           'children' => array()
@@ -50,7 +50,7 @@ class Sidebar {
 
     if ($_SESSION['role'] == 'admin') {
       $links['master-data']['links']['staff'] = array(
-        'icon' => 'bank-card',
+        'icon' => 'group',
         'label' => 'Staff Karyawan',
         'url' => BASE_URL . '/staff',
         'children' => array()
