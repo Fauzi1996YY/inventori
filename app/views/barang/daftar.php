@@ -31,6 +31,7 @@
         <td data-label="Jumlah" class="align-right"><?php echo $v['jumlah']; ?></td>
         <td>
           <div class="actions">
+            <a href="<?php echo BASE_URL . '/qrcode/' . $v['id_barang'];?>"><svg><use xlink:href="<?php echo BASE_URL; ?>/assets/images/sprite.svg#qrcode"></use></svg></a>
             <a href="<?php echo BASE_URL . '/barang/form/' . $v['id_barang'];?>"><svg><use xlink:href="<?php echo BASE_URL; ?>/assets/images/sprite.svg#edit"></use></svg></a>
             <a href="<?php echo BASE_URL . '/barang/hapus/' . $v['id_barang'];?>" class="dangerous"><svg><use xlink:href="<?php echo BASE_URL; ?>/assets/images/sprite.svg#delete"></use></svg></a>
           </div>
