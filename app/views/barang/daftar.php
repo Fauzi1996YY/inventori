@@ -14,8 +14,9 @@
       <th width="16.666%">Kode</th>
       <th width="16.666%">Nama</th>
       <th width="16.666%">Brand</th>
-      <th width="16.666%">Tahun pembuatan</th>
+      <th width="16.666%">Tahun Pembuatan</th>
       <th width="16.666%">Kategori</th>
+      <th width="16.666%">Kondisi Asset</th>
       <th width="16.666%" class="align-right">Jumlah</th>
       <th width="0%"></th>
     </tr>
@@ -26,8 +27,9 @@
         <td data-label="Kode" class="nowrap"><?php echo $v['kode']; ?></td>
         <td data-label="Nama" class="nowrap"><?php echo $v['nama']; ?></td>
         <td data-label="Brand"><?php echo $v['brand']; ?></td>
-        <td data-label="Tahun pembuatan"><?php echo $v['tahun_pembuatan']; ?></td>
+        <td data-label="Tahun Pembuatan"><?php echo $v['tahun_pembuatan']; ?></td>
         <td data-label="Kategori"><?php echo $v['nama_kategori']; ?></td>
+        <td data-label="Kondisi asset"><?php echo $v['kondisi_asset']; ?></td>
         <td data-label="Jumlah" class="align-right"><?php echo $v['jumlah']; ?></td>
         <td>
           <div class="actions">

@@ -42,6 +42,7 @@ class Barang extends \App\Core\Controller {
       'nama' => '',
       'brand' => '',
       'tahun_pembuatan' => '',
+      'kondisi_asset'=>'',
       'jumlah' => ''
     );
 
@@ -54,6 +55,7 @@ class Barang extends \App\Core\Controller {
         $data['default']['nama'] = $currentData['nama'];
         $data['default']['brand'] = $currentData['brand'];
         $data['default']['tahun_pembuatan'] = $currentData['tahun_pembuatan'];
+        $data['default']['kondisi_aseet'] = $currentData['kondisi_asset'];
         $data['default']['jumlah'] = $currentData['jumlah'];
       }
       else {
@@ -69,6 +71,7 @@ class Barang extends \App\Core\Controller {
       $set['nama'] = isset($_POST['nama']) ? trim($_POST['nama']) : '';
       $set['brand'] = isset($_POST['brand']) ? trim($_POST['brand']) : '';
       $set['tahun_pembuatan'] = isset($_POST['tahun_pembuatan']) ? trim($_POST['tahun_pembuatan']) : '';
+      $set['kondisi_asset'] = isset($_POST['kondisi_asset']) ? trim($_POST['kondisi_asset']) : '';
       $set['jumlah'] = isset($_POST['tahun_pembuatan']) ? trim($_POST['jumlah']) : '';
       
       if ($set['id_kategori'] == '') {
@@ -83,6 +86,10 @@ class Barang extends \App\Core\Controller {
         $data['error']['nama'] = 'Nama harus diisi';
       }
 
+      if ($set['kondisi_asset'] == '') {
+        $data['error']['kondisi_asset'] = 'Kondisi asset harus diisi';
+      }
+
       if ($set['jumlah'] == '') {
         $data['error']['jumlah'] = 'Jumlah harus diisi';
       }
@@ -92,6 +99,7 @@ class Barang extends \App\Core\Controller {
       $data['default']['nama'] = $set['nama'];
       $data['default']['brand'] = $set['brand'];
       $data['default']['tahun_pembuatan'] = $set['tahun_pembuatan'];
+      $data['default']['kondisi_asset'] = $set['kondisi_asset'];
       $data['default']['jumlah'] = $set['jumlah'];
       
       if (count($data['error']) < 1) {

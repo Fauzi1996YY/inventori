@@ -18,6 +18,7 @@ class Qrcode extends \App\Core\Controller {
     $item['kode'] = $data['kode'];
     $item['nama'] = $data['nama'];
     $item['tahun'] = $data['tahun_pembuatan'];
+    $item['kondisi_asset'] = $data['kondisi_asset'];
     $item['brand'] = $data['brand'];
     // die(json_encode($item));
     include_once('app/vendor/phpqrcode/qrlib.php');

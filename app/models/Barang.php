@@ -69,14 +69,15 @@ class Barang extends \App\Core\Model {
   }
 
   public function add($data) {
-    $sql = 'insert into `barang` (`id_kategori`, `kode`, `nama`, `brand`, `tahun_pembuatan`, `jumlah`)
-            values(:id_kategori, :kode, :nama, :brand, :tahun_pembuatan, :jumlah)';
+    $sql = 'insert into `barang` (`id_kategori`, `kode`, `nama`, `brand`, `tahun_pembuatan`,`kondisi_asset`, `jumlah`)
+            values(:id_kategori, :kode, :nama, :brand, :tahun_pembuatan,:kondisi_asset, :jumlah)';
     $stmt = $this->db->prepare($sql);
     $stmt->bindParam(':id_kategori', $data['id_kategori']);
     $stmt->bindParam(':kode', $data['kode']);
     $stmt->bindParam(':nama', $data['nama']);
     $stmt->bindParam(':brand', $data['brand']);
     $stmt->bindParam(':tahun_pembuatan', $data['tahun_pembuatan']);
+    $stmt->bindParam(':kondisi_asset', $data['kondisi_asset']);
     $stmt->bindParam(':jumlah', $data['jumlah']);
 
     try {
@@ -98,6 +99,7 @@ class Barang extends \App\Core\Model {
                 `nama` = :nama,
                 `brand` = :brand,
                 `tahun_pembuatan` = :tahun_pembuatan,
+                `kondisi_asset` = :kondisi_asset,
                 `jumlah` = :jumlah
             where `id_barang` = :id_barang';
     
@@ -107,6 +109,7 @@ class Barang extends \App\Core\Model {
     $stmt->bindParam(':nama', $data['nama']);
     $stmt->bindParam(':brand', $data['brand']);
     $stmt->bindParam(':tahun_pembuatan', $data['tahun_pembuatan']);
+    $stmt->bindParam(':kondisi_asset', $data['kondisi_asset']);
     $stmt->bindParam(':jumlah', $data['jumlah']);
     $stmt->bindParam(':id_barang', $id);
     

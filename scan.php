@@ -62,6 +62,7 @@ scanner.addListener('scan',function(content){
           +'<li><span class="key">Nama</span><span class="sep">:</span><span class="value">' + val.nama + '</span></li>'
           +'<li><span class="key">Tahun</span><span class="sep">:</span><span class="value">' + val.tahun + '</span></li>'
           +'<li><span class="key">Brand</span><span class="sep">:</span><span class="value">' + val.brand + '</span></li>'
+          +'<li><span class="key">Kondisi Asset</span><span class="sep">:</span><span class="value">' + val.kondisi_asset + '</span></li>'
         +'</ul>'
         +'<p><a href="' + val.url + '">Edit barang ini</a></p>';
     document.getElementById('data').innerHTML = output;

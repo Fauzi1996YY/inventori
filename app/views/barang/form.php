@@ -6,6 +6,7 @@ $errorClass = array(
   'nama' => '',
   'brand' => '',
   'tahun_pembuatan' => '',
+  'kondisi_asset'=>'',
   'jumlah' => ''
 );
 
@@ -76,6 +77,10 @@ foreach ($errorClass as $k => $v) {
         <?php echo $errorText['tahun_pembuatan']; ?>
       </p>
       <p>
+        <label for="kondisi_asset">Kondisi Asset</label><br>
+        <input type="text" name="kondisi_asset" id="kondisi_asset" class="<?php echo $errorClass['kondisi_asset'];?>" value="<?php echo $default['kondisi_asset']; ?>"><br>
+        <?php echo $errorText['kondisi_asset']; ?>
+      </p>
         <label for="jumlah"><span class="mandatory">Jumlah</span></label><br>
         <input type="number" name="jumlah" id="jumlah" class="one-fourth <?php echo $errorClass['jumlah'];?>" value="<?php echo $default['jumlah']; ?>"><br>
         <?php echo $errorText['jumlah']; ?>

@@ -11,8 +11,9 @@
 <table class="resp">
   <thead>
     <tr>
-      <th width="0%">Kode</th>
+      <th width="0%">Username</th>
       <th width="0%">Nama</th>
+      <th widht="0%">password</th>
       <th width="0%"></th>
     </tr>
   </thead>
@@ -21,6 +22,7 @@
       <tr>
         <td data-label="Email" class="nowrap"><?php echo $v['email']; ?></td>
         <td data-label="Nama" class="nowrap"><?php echo $v['nama']; ?></td>
+        <td data-label="Password" class="nowrap"><?php echo $v['password']; ?></td>
         <td>
           <div class="actions">
             <a href="<?php echo BASE_URL . '/staff/form/' . $v['id_user'];?>"><svg><use xlink:href="<?php echo BASE_URL; ?>/assets/images/sprite.svg#edit"></use></svg></a>

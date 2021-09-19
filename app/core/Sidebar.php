@@ -41,7 +41,7 @@ class Sidebar {
         ),
         'anggota' => array(
           'icon' => 'award',
-          'label' => 'Anggota',
+          'label' => 'Data Peminjam',
           'url' => BASE_URL . '/anggota',
           'children' => array()
         )
