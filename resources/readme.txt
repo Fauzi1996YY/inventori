@@ -1,0 +1,12 @@
+- File SQL untuk database ada di resources/inventori.sql. Jika sudah diinstall, akan ada 1 akun untuk login ke aplikasi, yaitu:
+  - Email: admin@inventori.com
+  - Password: pass
+- Aplikasi menggunakan file .htaccess untuk mengatur URL.
+  - Pastikan mod_rewrite di server dalam keadaan aktif
+  - Pastikan `AllowOverride All` (bukan `AllowOverride None`) di file httpd.conf.
+- Konfigurasi aplikasi ada di file `config.php`. Nilai yang dapat diganti adalah:
+  - `BASE_URL` untuk setting URL di browser bar
+  - `DB_USER`, `DB_PASS`, `DB_NAME` untuk informasi database
+- Agar dapat mengeluarkan gambar QRcode, pastikan library php-gd diinstall dan aktif.
+- Scan QRcode ada di url `scan.php`. Jika `BASE_URL` tidak dirubah, maka alamatnya ada di http://localhost/inventori/scan.php
+- Untuk mencoba Scan QRcode, dapat menggunakan aplikasi Ngrok (https://ngrok.com/).
